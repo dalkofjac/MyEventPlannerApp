@@ -1,0 +1,21 @@
+<resources>
+    <!-- General -->
+    <string name="app_name">MyEventPlanner</string>
+
+    <!-- Navigation drawer -->
+    <string name="nav_drawer_open">Open navigation drawer</string>
+    <string name="nav_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <!-- Navigation menu -->
+    <string name="action_settings">Settings</string>
+
+    <!-- Other -->
+    <string name="welcome_message">Welcome to MyEventPlanner!</string>
+    <string name="nav_drawer_buttons_import">Import</string>
+    <string name="nav_drawer_buttons_gallery">Gallery</string>
+    <string name="nav_drawer_buttons_slideshow">Slideshow</string>
+    <string name="nav_drawer_buttons_tools">Tools</string>
+</resources>
