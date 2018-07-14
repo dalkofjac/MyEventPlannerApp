@@ -27,4 +27,16 @@ public class GeneralEventDataService implements DataServiceBase {
                 .where(Event_Table.name.eq(name))
                 .querySingle();
     }
+
+    @Override
+    public boolean isEmpty() {
+        if(SQLite.select().from(Event.class)
+                .queryList()
+                .isEmpty()){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

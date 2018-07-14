@@ -39,23 +39,36 @@ public class Event extends BaseModel implements IdentifiableEntity, DatedEntity 
     String time;
 
     @Column
+    String location;
+
+    @Column
     @NotNull
     boolean reschedulable;
 
     @Column
     @NotNull
-    Date created;
+    String created;
 
     // Constructors
     public Event() {
     }
+    public Event(EventType type, String name, String date, String time, String location, boolean reschedulable, String created) {
+        this.type = type;
+        this.name = name;
+        this.date = date;
+        this.time = time;
+        this.location = location;
+        this.reschedulable = reschedulable;
+        this.created = created;
+    }
 
-    public Event(int id, EventType type, String name, String date, String time, boolean reschedulable, Date created) {
+    public Event(int id, EventType type, String name, String date, String time, String location, boolean reschedulable, String created) {
         this.id = id;
         this.type = type;
         this.name = name;
         this.date = date;
         this.time = time;
+        this.location = location;
         this.reschedulable = reschedulable;
         this.created = created;
     }
@@ -109,11 +122,19 @@ public class Event extends BaseModel implements IdentifiableEntity, DatedEntity 
         this.reschedulable = reschedulable;
     }
 
-    public Date getCreated() {
+    public String getCreated() {
         return created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(String created) {
         this.created = created;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

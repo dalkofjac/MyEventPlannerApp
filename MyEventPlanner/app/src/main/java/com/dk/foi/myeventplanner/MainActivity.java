@@ -18,6 +18,8 @@ import com.dk.foi.myeventplanner.enums.FragmentLevel;
 import com.dk.foi.myeventplanner.fragments.HolidaysFragment;
 import com.dk.foi.myeventplanner.fragments.MainScreenFragment;
 import com.dk.foi.myeventplanner.helpers.FragmentStarter;
+import com.raizlabs.android.dbflow.config.FlowConfig;
+import com.raizlabs.android.dbflow.config.FlowManager;
 
 import butterknife.ButterKnife;
 
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
         ButterKnife.bind(this);
+        FlowManager.init(new FlowConfig.Builder(this).build());
 
         MainScreenFragment msf = new MainScreenFragment();
         mFragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);

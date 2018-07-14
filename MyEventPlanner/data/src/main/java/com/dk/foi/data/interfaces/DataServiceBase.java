@@ -8,4 +8,5 @@ public interface DataServiceBase {
     List<Event> getAll();
     Event get(int id);
     Event getByName(String name);
+    boolean isEmpty();
 }

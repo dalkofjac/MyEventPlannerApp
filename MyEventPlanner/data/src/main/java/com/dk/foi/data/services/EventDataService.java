@@ -18,13 +18,13 @@ public class EventDataService implements DataServiceBase{
     @Override
     public List<Event> getAll() {
         return SQLite.select().from(Event.class)
-                .where(Event_Table.type.eq(eventType)).queryList();
+                .where(Event_Table.type.eq(this.eventType)).queryList();
     }
 
     @Override
     public Event get(int id) {
         return SQLite.select().from(Event.class)
-                .where(Event_Table.type.eq(eventType))
+                .where(Event_Table.type.eq(this.eventType))
                 .and(Event_Table.id.eq(id))
                 .querySingle();
     }
@@ -32,8 +32,21 @@ public class EventDataService implements DataServiceBase{
     @Override
     public Event getByName(String name) {
         return SQLite.select().from(Event.class)
-                .where(Event_Table.type.eq(eventType))
+                .where(Event_Table.type.eq(this.eventType))
                 .and(Event_Table.name.eq(name))
                 .querySingle();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        if(SQLite.select().from(Event.class)
+                .where(Event_Table.type.eq(this.eventType))
+                .queryList()
+                .isEmpty()){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
