@@ -1,5 +1,6 @@
 package com.dk.foi.myeventplanner;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,37 +14,76 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.dk.foi.myeventplanner.enums.FragmentLevel;
+import com.dk.foi.myeventplanner.fragments.MainScreenFragment;
+import com.dk.foi.myeventplanner.helpers.FragmentStarter;
+
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener {
+    private FragmentManager mFragmentManager;
+    private ActionBarDrawerToggle toggle;
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ButterKnife.bind(this);
+        mFragmentManager = getFragmentManager();
+        mFragmentManager.addOnBackStackChangedListener(this);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        drawer = findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.nav_drawer_open, R.string.nav_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getFragmentManager().getBackStackEntryCount()==1){
+                    drawer.openDrawer(GravityCompat.START);
+                }else if(getFragmentManager().getBackStackEntryCount()==2){
+                    drawer.openDrawer(GravityCompat.START);
+                }
+                else {
+                    onBackPressed();
+                }
+            }
+        });
+
+        ButterKnife.bind(this);
+
+        MainScreenFragment msf = new MainScreenFragment();
+        mFragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        FragmentStarter.StartNewFragment(msf, this, FragmentLevel.INDEX);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        int backStackCount = mFragmentManager.getBackStackEntryCount();
+        if (backStackCount>=2){
+            if(drawer.isDrawerOpen(GravityCompat.START)){
+                drawer.closeDrawer(GravityCompat.START);
+            }
+            else {
+                mFragmentManager.popBackStack();
+            }
         } else {
-            super.onBackPressed();
+            if (drawer.isDrawerOpen(GravityCompat.START)){
+                drawer.closeDrawer(GravityCompat.START);
+            }else {
+                this.finish();
+            }
         }
     }
 
@@ -72,14 +112,25 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.nav_start: break;
+            case R.id.nav_start:
+                MainScreenFragment msf = new MainScreenFragment();
+                mFragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                FragmentStarter.StartNewFragment(msf, this, FragmentLevel.LEVEL_ONE);
+                break;
             case R.id.nav_upcoming: break;
             case R.id.nav_holiday: break;
             default: break;
         }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        return true;
+        return false;
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        toggle.setDrawerIndicatorEnabled(mFragmentManager.getBackStackEntryCount()==1 || mFragmentManager.getBackStackEntryCount()==2);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(mFragmentManager.getBackStackEntryCount()>2);
+        toggle.syncState();
     }
 }

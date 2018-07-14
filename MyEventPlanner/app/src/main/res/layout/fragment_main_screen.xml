@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layoutsHolder"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="match_parent"
+            app:srcCompat="@mipmap/logo_icon"
+            android:id="@+id/ImageView_ms_logo"
+            android:adjustViewBounds="false"
+            android:cropToPadding="false"
+            android:layout_height="75dp"
+            android:contentDescription="@string/image_default_desc" />
+
+        <ImageView
+            android:layout_height="20dp"
+            app:srcCompat="@drawable/thin_line"
+            android:id="@+id/thin_line_1"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:contentDescription="@string/image_default_desc" />
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonsLayout"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/firstRowLayout"
+                android:layout_marginBottom="5dp">
+
+                <Button
+                    android:text="@string/nav_drawer_upcoming"
+                    android:id="@+id/button_ms_upcoming"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textStyle="normal|bold|italic"
+                    android:layout_width="50dp"
+                    android:layout_height="120dp"
+                    android:textColor="#fff"
+                    android:background="@color/colorPrimary" />
+
+                <Button
+                    android:text="@string/nav_drawer_holidays"
+                    android:id="@+id/button_ms_holiday"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textStyle="normal|bold|italic"
+                    android:layout_height="120dp"
+                    android:layout_width="50dp"
+                    android:textColor="#fff"
+                    android:background="@color/colorPrimary"
+                    android:layout_marginLeft="5dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/secondRowLayout">
+
+                <Button
+                    android:text="@string/nav_drawer_birthday"
+                    android:id="@+id/button_ms_birthday"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textStyle="normal|bold|italic"
+                    android:layout_height="120dp"
+                    android:layout_width="50dp"
+                    android:textColor="#fff"
+                    android:background="@color/colorPrimary"
+                    android:layout_marginRight="5dp" />
+
+                <Button
+                    android:text="@string/nav_drawer_other"
+                    android:id="@+id/button_ms_other"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textStyle="normal|bold|italic"
+                    android:layout_height="120dp"
+                    android:layout_width="50dp"
+                    android:textColor="#fff"
+                    android:background="@color/colorPrimary" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_height="20dp"
+            app:srcCompat="@drawable/thin_line"
+            android:id="@+id/thin_line_2"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:contentDescription="@string/image_default_desc" />
+
+    </LinearLayout>
+
+</LinearLayout>
