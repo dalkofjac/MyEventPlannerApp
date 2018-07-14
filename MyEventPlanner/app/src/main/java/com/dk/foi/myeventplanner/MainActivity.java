@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.dk.foi.myeventplanner.enums.FragmentLevel;
+import com.dk.foi.myeventplanner.fragments.HolidaysFragment;
 import com.dk.foi.myeventplanner.fragments.MainScreenFragment;
 import com.dk.foi.myeventplanner.helpers.FragmentStarter;
 
@@ -115,10 +116,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_start:
                 MainScreenFragment msf = new MainScreenFragment();
                 mFragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                FragmentStarter.StartNewFragment(msf, this, FragmentLevel.LEVEL_ONE);
+                FragmentStarter.StartNewFragment(msf, this, FragmentLevel.INDEX);
                 break;
             case R.id.nav_upcoming: break;
-            case R.id.nav_holiday: break;
+            case R.id.nav_holiday:
+                HolidaysFragment hf = new HolidaysFragment();
+                FragmentStarter.StartNewFragment(hf, this, FragmentLevel.LEVEL_ONE);
+                break;
             default: break;
         }
 

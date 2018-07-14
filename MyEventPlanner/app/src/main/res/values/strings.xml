@@ -18,6 +18,13 @@
     <string name="action_settings">Settings</string>
     <string name="action_about">About</string>
 
+    <!-- Fragment titles -->
+    <string name="main_screen_title">My Event Planner</string>
+    <string name="holidays_title">Holidays</string>
+    <string name="birthdays_title">Birthdays</string>
+    <string name="other_events_title">Other events</string>
+    <string name="upcoming_title">Upcoming events</string>
+
     <!-- Other -->
     <string name="image_default_desc">Image</string>
 </resources>
