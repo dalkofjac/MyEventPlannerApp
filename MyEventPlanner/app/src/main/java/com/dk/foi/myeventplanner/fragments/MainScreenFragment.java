@@ -23,7 +23,7 @@ public class MainScreenFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main_screen,container,false);
         ButterKnife.bind(this, view);
 
-        this.fragmentTitle = getResources().getString(R.string.main_screen_title);
+        fragmentTitle = getResources().getString(R.string.main_screen_title);
 
         return view;
     }
@@ -31,7 +31,7 @@ public class MainScreenFragment extends Fragment {
     @Override
     public void onStart(){
         super.onStart();
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(this.fragmentTitle);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(fragmentTitle);
     }
 
     @OnClick(R.id.button_ms_holiday)

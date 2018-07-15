@@ -24,8 +24,25 @@
     <string name="birthdays_title">Birthdays</string>
     <string name="other_events_title">Other events</string>
     <string name="upcoming_title">Upcoming events</string>
+    <string name="holiday_details_title">Time until holiday</string>
+
+    <!-- Event list item -->
+    <string name="event_list_item_date">Date:</string>
+
+    <!-- Event details fragment -->
+    <string name="event_comes_in">comes in:</string>
+    <string name="event_days_general">DAYS</string>
+    <string name="event_or_general">or</string>
+    <string name="event_hours_general">HOURS</string>
+    <string name="event_delete">Delete event</string>
+    <string name="event_end_text">Today!</string>
+
+    <!-- Dialogs -->
+    <string name="removal_question">Do you want to remove this event?</string>
+    <string name="remove">Remove</string>
+    <string name="cancel">Cancel</string>
 
     <!-- Other -->
     <string name="image_default_desc">Image</string>
-    <string name="event_list_item_date">Date:</string>
+
 </resources>

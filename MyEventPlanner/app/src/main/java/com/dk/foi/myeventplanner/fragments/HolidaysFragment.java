@@ -16,7 +16,7 @@ import com.dk.foi.data.enums.EventType;
 import com.dk.foi.data.services.EventDataService;
 import com.dk.foi.myeventplanner.R;
 import com.dk.foi.myeventplanner.adapters.EventsAdapter;
-import com.dk.foi.myeventplanner.helpers.FragmentStarter;
+import com.dk.foi.myeventplanner.services.EventListSorterService;
 import com.dk.foi.myeventplanner.services.TemplateDataService;
 
 import java.util.ArrayList;
@@ -30,6 +30,7 @@ public class HolidaysFragment extends Fragment {
     private RecyclerView recyclerView;
     private EventsAdapter mAdapter;
     private EventDataService dataService;
+    private EventListSorterService sorterService = new EventListSorterService();
 
     @BindView(R.id.fab_event)
     public FloatingActionButton fab;
@@ -38,7 +39,7 @@ public class HolidaysFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_holidays,container,false);
+        View view = inflater.inflate(R.layout.fragment_event,container,false);
         ButterKnife.bind(this, view);
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -54,9 +55,6 @@ public class HolidaysFragment extends Fragment {
             }
         });
 
-        dataService = new EventDataService(EventType.HOLIDAY);
-        fragmentTitle = getResources().getString(R.string.holidays_title);
-
         return view;
     }
 
@@ -64,6 +62,8 @@ public class HolidaysFragment extends Fragment {
     public void onStart() {
         super.onStart();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(fragmentTitle);
+        dataService = new EventDataService(EventType.HOLIDAY);
+        fragmentTitle = getResources().getString(R.string.holidays_title);
         recyclerView = getView().findViewById(R.id.main_recycler_2);
 
         requestData();
@@ -84,5 +84,7 @@ public class HolidaysFragment extends Fragment {
         else{
             eventList = dataService.getAll();
         }
+        sorterService.attachYears(eventList);
+        sorterService.sortTheList(eventList);
     }
 }
