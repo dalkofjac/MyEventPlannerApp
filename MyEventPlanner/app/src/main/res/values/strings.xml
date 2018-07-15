@@ -25,6 +25,7 @@
     <string name="other_events_title">Other events</string>
     <string name="upcoming_title">Upcoming events</string>
     <string name="holiday_details_title">Time until holiday</string>
+    <string name="add_holiday_title">Add new holiday</string>
 
     <!-- Event list item -->
     <string name="event_list_item_date">Date:</string>
@@ -36,6 +37,18 @@
     <string name="event_hours_general">HOURS</string>
     <string name="event_delete">Delete event</string>
     <string name="event_end_text">Today!</string>
+    <string name="event_created">Created:</string>
+
+    <!-- Add new event fragment -->
+    <string name="add_event_date">Date (ex. 05/11)</string>
+    <string name="add_event_name">Name</string>
+    <string name="add_event_add">Add</string>
+    <string name="added_event">Event successfully added!</string>
+    <string name="bad_input">Bad input!</string>
+    <string name="bad_date_format">Bad date format! (dd/mm)</string>
+    <string name="invalid_date">Nonexistent date!</string>
+    <string name="name_alr_exist">Given name already exists!</string>
+    <string name="add_event_tip">Year will be automatically calculated based on current date.</string>
 
     <!-- Dialogs -->
     <string name="removal_question">Do you want to remove this event?</string>

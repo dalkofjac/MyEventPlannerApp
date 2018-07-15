@@ -36,40 +36,24 @@ public class Event extends BaseModel implements IdentifiableEntity, DatedEntity 
     String date;
 
     @Column
-    String time;
-
-    @Column
-    String location;
-
-    @Column
-    @NotNull
-    boolean reschedulable;
-
-    @Column
     @NotNull
     String created;
 
     // Constructors
     public Event() {
     }
-    public Event(EventType type, String name, String date, String time, String location, boolean reschedulable, String created) {
+    public Event(EventType type, String name, String date, String created) {
         this.type = type;
         this.name = name;
         this.date = date;
-        this.time = time;
-        this.location = location;
-        this.reschedulable = reschedulable;
         this.created = created;
     }
 
-    public Event(int id, EventType type, String name, String date, String time, String location, boolean reschedulable, String created) {
+    public Event(int id, EventType type, String name, String date, String created) {
         this.id = id;
         this.type = type;
         this.name = name;
         this.date = date;
-        this.time = time;
-        this.location = location;
-        this.reschedulable = reschedulable;
         this.created = created;
     }
 
@@ -106,35 +90,11 @@ public class Event extends BaseModel implements IdentifiableEntity, DatedEntity 
         this.date = date;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public boolean isReschedulable() {
-        return reschedulable;
-    }
-
-    public void setReschedulable(boolean reschedulable) {
-        this.reschedulable = reschedulable;
-    }
-
     public String getCreated() {
         return created;
     }
 
     public void setCreated(String created) {
         this.created = created;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 }

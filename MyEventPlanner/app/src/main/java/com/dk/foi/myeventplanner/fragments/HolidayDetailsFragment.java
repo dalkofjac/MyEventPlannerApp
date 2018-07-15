@@ -33,12 +33,16 @@ public class HolidayDetailsFragment extends Fragment {
     @BindView(R.id.textView_event_days)
     TextView textDays;
 
+    @BindView(R.id.textView_event_created)
+    TextView textCreated;
+
     private EventDataService dataService;
     private AlertDialog alertDialog;
     private TimerSetterService timerSetter;
 
     private String eventName;
     private String eventDate;
+    private Event event;
 
     private String removalQuestion;
     private String remove;
@@ -73,10 +77,13 @@ public class HolidayDetailsFragment extends Fragment {
         dataService = new EventDataService(EventType.HOLIDAY);
         timerSetter = new TimerSetterService();
 
+        event = dataService.getByName(eventName);
+
         textName.setText(eventName);
         textDate.setText(eventDate);
         textDays.setText(""+ timerSetter.calculateDays(eventDate));
         timerSetter.setTimer(eventDate, textTimer, eventEndText);
+        textCreated.setText(event.getCreated());
     }
 
     @OnClick(R.id.button_event_delete)

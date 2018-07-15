@@ -3,6 +3,8 @@ package com.dk.foi.myeventplanner.services;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
+import com.dk.foi.myeventplanner.helpers.DateManager;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -44,9 +46,10 @@ public class TimerSetterService {
             e.printStackTrace();
         }
     }
+
     public long calculateDays(String eventDate){
         long result = 0;
-        Date date = convertStringToDate(eventDate);
+        Date date = DateManager.convertStringToDate(eventDate);
         Calendar event = Calendar.getInstance();
         event.setTime(date);
 
@@ -57,16 +60,6 @@ public class TimerSetterService {
             return 0;
         }else{
             return (result*(-1))+1;
-        }
-    }
-    private Date convertStringToDate(String sDate){
-        SimpleDateFormat dateFormat;
-        dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.UK);
-        Date convertedDate = new Date();
-        try {
-            return convertedDate = dateFormat.parse(sDate);
-        }catch(ParseException e){
-            return null;
         }
     }
 }

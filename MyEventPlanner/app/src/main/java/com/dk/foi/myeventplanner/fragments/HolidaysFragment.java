@@ -16,6 +16,8 @@ import com.dk.foi.data.enums.EventType;
 import com.dk.foi.data.services.EventDataService;
 import com.dk.foi.myeventplanner.R;
 import com.dk.foi.myeventplanner.adapters.EventsAdapter;
+import com.dk.foi.myeventplanner.enums.FragmentLevel;
+import com.dk.foi.myeventplanner.helpers.FragmentStarter;
 import com.dk.foi.myeventplanner.services.EventListSorterService;
 import com.dk.foi.myeventplanner.services.TemplateDataService;
 
@@ -45,13 +47,13 @@ public class HolidaysFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Bundle args = new Bundle();
-//                args.putInt("EVENT_TYPE", 1);
-//
-//                AddNewEventFragment anef = new AddNewEventFragment();
-//                anef.setArguments(args);
-//
-//                FragmentStarter.StartNewFragment(anef, getActivity(), 2);
+                Bundle args = new Bundle();
+                args.putInt("EVENT_TYPE", EventType.HOLIDAY.ordinal());
+
+                AddNewEventFragment anef = new AddNewEventFragment();
+                anef.setArguments(args);
+
+                FragmentStarter.StartNewFragment(anef, getActivity(), FragmentLevel.LEVEL_TWO);
             }
         });
 
