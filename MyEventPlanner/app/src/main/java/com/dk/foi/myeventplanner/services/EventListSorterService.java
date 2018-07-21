@@ -5,6 +5,7 @@ import com.dk.foi.myeventplanner.helpers.DateManager;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
@@ -12,7 +13,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class EventListSorterService {
-    public void sortTheList(List<Event> eventList){
+
+    public EventListSorterService(){
+    }
+
+    public List<Event> sortTheList(List<Event> eventList){
         Event eventHigh;
         Event eventLow;
         for(int i=0; i<eventList.size();i++){
@@ -26,8 +31,9 @@ public class EventListSorterService {
                 }
             }
         }
+        return eventList;
     }
-    public void attachYears(List<Event> targetedEventList){
+    public List<Event> attachYears(List<Event> targetedEventList){
         Calendar cal=Calendar.getInstance();
         int currentYear = cal.get(Calendar.YEAR);
         Date todayDate = DateManager.convertStringToDate(DateManager.getTodayDate());
@@ -43,5 +49,6 @@ public class EventListSorterService {
                 targetedEventList.get(i).setDate(event.getDate()+"/"+currentYear);
             }
         }
+        return targetedEventList;
     }
 }

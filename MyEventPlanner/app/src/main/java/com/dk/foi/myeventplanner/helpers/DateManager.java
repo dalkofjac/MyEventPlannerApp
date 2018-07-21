@@ -8,8 +8,7 @@ import java.util.Locale;
 
 public class DateManager {
     public static Date convertStringToDate(String sDate){
-        SimpleDateFormat dateFormat;
-        dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.UK);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.UK);
         Date convertedDate = new Date();
         try {
             return convertedDate = dateFormat.parse(sDate);

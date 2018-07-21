@@ -86,7 +86,7 @@ public class HolidaysFragment extends Fragment {
         else{
             eventList = dataService.getAll();
         }
-        sorterService.attachYears(eventList);
-        sorterService.sortTheList(eventList);
+        eventList = sorterService.attachYears(eventList);
+        eventList = sorterService.sortTheList(eventList);
     }
 }
