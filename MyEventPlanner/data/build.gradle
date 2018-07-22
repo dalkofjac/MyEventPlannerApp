@@ -4,11 +4,8 @@ def dbflow_version = "4.2.4"
 
 android {
     compileSdkVersion 26
-
-
-
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
