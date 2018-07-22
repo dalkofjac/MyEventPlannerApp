@@ -36,7 +36,25 @@ public class MainScreenFragment extends Fragment {
 
     @OnClick(R.id.button_ms_holiday)
     public void onButtonMsHolidayClicked(){
-        HolidaysFragment hf = new HolidaysFragment();
-        FragmentStarter.StartNewFragment(hf, getActivity(), FragmentLevel.LEVEL_ONE);
+        HolidaysFragment fragment = new HolidaysFragment();
+        FragmentStarter.StartNewFragment(fragment, getActivity(), FragmentLevel.LEVEL_ONE);
+    }
+
+    @OnClick(R.id.button_ms_birthday)
+    public void onButtonMsBirthdayClicked(){
+        BirthdaysFragment fragment = new BirthdaysFragment();
+        FragmentStarter.StartNewFragment(fragment, getActivity(), FragmentLevel.LEVEL_ONE);
+    }
+
+    @OnClick(R.id.button_ms_other)
+    public void onButtonMsOtherEventClicked(){
+        OtherEventsFragment fragment = new OtherEventsFragment();
+        FragmentStarter.StartNewFragment(fragment, getActivity(), FragmentLevel.LEVEL_ONE);
+    }
+
+    @OnClick(R.id.button_ms_upcoming)
+    public void onButtonMsUpcomingEventClicked(){
+        UpcomingEventsFragment fragment = new UpcomingEventsFragment();
+        FragmentStarter.StartNewFragment(fragment, getActivity(), FragmentLevel.LEVEL_ONE);
     }
 }

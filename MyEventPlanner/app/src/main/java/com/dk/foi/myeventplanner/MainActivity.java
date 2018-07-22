@@ -15,8 +15,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.dk.foi.myeventplanner.enums.FragmentLevel;
+import com.dk.foi.myeventplanner.fragments.BirthdaysFragment;
 import com.dk.foi.myeventplanner.fragments.HolidaysFragment;
 import com.dk.foi.myeventplanner.fragments.MainScreenFragment;
+import com.dk.foi.myeventplanner.fragments.OtherEventsFragment;
+import com.dk.foi.myeventplanner.fragments.UpcomingEventsFragment;
 import com.dk.foi.myeventplanner.helpers.FragmentStarter;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
@@ -121,10 +124,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 mFragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 FragmentStarter.StartNewFragment(msf, this, FragmentLevel.INDEX);
                 break;
-            case R.id.nav_upcoming: break;
+            case R.id.nav_upcoming:
+                UpcomingEventsFragment uf = new UpcomingEventsFragment();
+                FragmentStarter.StartNewFragment(uf, this, FragmentLevel.LEVEL_ONE);
+                break;
             case R.id.nav_holiday:
                 HolidaysFragment hf = new HolidaysFragment();
                 FragmentStarter.StartNewFragment(hf, this, FragmentLevel.LEVEL_ONE);
+                break;
+            case R.id.nav_birthday:
+                BirthdaysFragment bf = new BirthdaysFragment();
+                FragmentStarter.StartNewFragment(bf, this, FragmentLevel.LEVEL_ONE);
+                break;
+            case R.id.nav_other:
+                OtherEventsFragment of = new OtherEventsFragment();
+                FragmentStarter.StartNewFragment(of, this, FragmentLevel.LEVEL_ONE);
                 break;
             default: break;
         }

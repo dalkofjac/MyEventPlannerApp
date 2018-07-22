@@ -14,8 +14,10 @@ import android.view.ViewGroup;
 import com.dk.foi.data.entities.Event;
 import com.dk.foi.data.enums.EventType;
 import com.dk.foi.data.services.EventDataService;
+import com.dk.foi.data.services.GeneralEventDataService;
 import com.dk.foi.myeventplanner.R;
 import com.dk.foi.myeventplanner.adapters.EventsAdapter;
+import com.dk.foi.myeventplanner.adapters.UpcomingEventsAdapter;
 import com.dk.foi.myeventplanner.enums.FragmentLevel;
 import com.dk.foi.myeventplanner.helpers.FragmentStarter;
 import com.dk.foi.myeventplanner.services.EventListSorterService;
@@ -27,11 +29,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HolidaysFragment extends Fragment {
+public class UpcomingEventsFragment extends Fragment {
     private List<Event> eventList = new ArrayList<>();
     private RecyclerView recyclerView;
-    private EventsAdapter mAdapter;
-    private EventDataService dataService;
+    private UpcomingEventsAdapter mAdapter;
+    private GeneralEventDataService dataService;
     private EventListSorterService sorterService;
 
     @BindView(R.id.fab_event)
@@ -44,34 +46,21 @@ public class HolidaysFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_event,container,false);
         ButterKnife.bind(this, view);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle args = new Bundle();
-                args.putInt("EVENT_TYPE", EventType.HOLIDAY.ordinal());
-
-                AddNewEventFragment anef = new AddNewEventFragment();
-                anef.setArguments(args);
-
-                FragmentStarter.StartNewFragment(anef, getActivity(), FragmentLevel.LEVEL_TWO);
-            }
-        });
-
         return view;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        fragmentTitle = getResources().getString(R.string.holidays_title);
+        fragmentTitle = getResources().getString(R.string.upcoming_title);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(fragmentTitle);
-        dataService = new EventDataService(EventType.HOLIDAY);
+        dataService = new GeneralEventDataService();
         sorterService = new EventListSorterService();
         recyclerView = getView().findViewById(R.id.main_recycler_2);
 
         requestData();
 
-        mAdapter = new EventsAdapter(eventList, getActivity(), EventType.HOLIDAY);
+        mAdapter = new UpcomingEventsAdapter(eventList, getActivity());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -82,12 +71,18 @@ public class HolidaysFragment extends Fragment {
 
     private void requestData(){
         if(dataService.isEmpty()){
-            eventList = TemplateDataService.getHolidaysData();
+            eventList.addAll(TemplateDataService.getHolidaysData());
+            eventList.addAll(TemplateDataService.getHolidaysData());
+            eventList.addAll(TemplateDataService.getOtherEventsData());
         }
         else{
             eventList = dataService.getAll();
         }
         eventList = sorterService.attachYears(eventList);
         eventList = sorterService.sortTheList(eventList);
+
+        while(eventList.size()!=5){
+            eventList.remove(eventList.size()-1);
+        }
     }
 }

@@ -23,6 +23,14 @@
             android:id="@+id/nav_holiday"
             android:icon="@drawable/ic_menu_holiday"
             android:title="@string/nav_drawer_holidays" />
+        <item
+            android:id="@+id/nav_birthday"
+            android:icon="@drawable/ic_menu_birthday"
+            android:title="@string/nav_drawer_birthday" />
+        <item
+            android:id="@+id/nav_other"
+            android:icon="@drawable/ic_menu_other_events"
+            android:title="@string/nav_drawer_other" />
     </group>
 
 </menu>

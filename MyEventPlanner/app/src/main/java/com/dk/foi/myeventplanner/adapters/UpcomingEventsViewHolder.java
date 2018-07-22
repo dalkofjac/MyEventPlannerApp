@@ -7,27 +7,29 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.dk.foi.data.entities.Event;
 import com.dk.foi.data.enums.EventType;
 import com.dk.foi.myeventplanner.R;
 import com.dk.foi.myeventplanner.enums.FragmentLevel;
 import com.dk.foi.myeventplanner.fragments.BirthdayDetailsFragment;
-import com.dk.foi.myeventplanner.fragments.BirthdaysFragment;
 import com.dk.foi.myeventplanner.fragments.HolidayDetailsFragment;
 import com.dk.foi.myeventplanner.fragments.OtherEventDetailsFragment;
 import com.dk.foi.myeventplanner.helpers.FragmentStarter;
 
-public class EventsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+import java.util.List;
+
+public class UpcomingEventsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
     public TextView name;
     public TextView date;
 
     private Context context;
-    private EventType type;
+    private List<Event> eventList;
 
-    public EventsViewHolder(View view , Context context, EventType type) {
+    public UpcomingEventsViewHolder(View view , Context context, List<Event> eventList) {
         super(view);
 
         this.context = context;
-        this.type = type;
+        this.eventList = eventList;
         name = view.findViewById(R.id.textView_event_name);
         date = view.findViewById(R.id.textView_event_date);
         itemView.setOnClickListener(this);
@@ -38,6 +40,8 @@ public class EventsViewHolder extends RecyclerView.ViewHolder implements View.On
         Bundle args = new Bundle();
         args.putString("EVENT_NAME",(String)name.getText());
         args.putString("EVENT_DATE",(String)date.getText());
+
+        EventType type = getEventType(eventList, (String)name.getText(), (String)date.getText());
 
         switch (type) {
             case HOLIDAY:
@@ -63,5 +67,15 @@ public class EventsViewHolder extends RecyclerView.ViewHolder implements View.On
     @Override
     public boolean onLongClick(View v) {
         return false;
+    }
+
+    private EventType getEventType(List<Event> eventList, String name, String date) {
+        for(int i = 0; i< eventList.size(); i++) {
+            if(eventList.get(i).getName() == name
+                    && eventList.get(i).getDate() == date) {
+                return eventList.get(i).getType();
+            }
+        }
+        return EventType.OTHER;
     }
 }

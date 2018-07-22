@@ -20,7 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class HolidayDetailsFragment extends Fragment {
+public class OtherEventDetailsFragment extends Fragment {
     @BindView(R.id.textView_event_name)
     TextView textName;
 
@@ -64,7 +64,7 @@ public class HolidayDetailsFragment extends Fragment {
         remove = view.getContext().getString(R.string.remove);
         cancel = view.getContext().getString(R.string.cancel);
         eventEndText = view.getContext().getString(R.string.event_end_text);
-        fragmentTitle = getResources().getString(R.string.holiday_details_title);
+        fragmentTitle = getResources().getString(R.string.other_event_details_title);
 
         return view;
     }
@@ -73,7 +73,7 @@ public class HolidayDetailsFragment extends Fragment {
     public void onStart() {
         super.onStart();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(fragmentTitle);
-        dataService = new EventDataService(EventType.HOLIDAY);
+        dataService = new EventDataService(EventType.OTHER);
         timerSetter = new TimerSetterService();
 
         event = dataService.getByName(eventName);

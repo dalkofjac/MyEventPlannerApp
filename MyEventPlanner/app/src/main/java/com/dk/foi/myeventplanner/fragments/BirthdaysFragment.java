@@ -27,7 +27,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HolidaysFragment extends Fragment {
+public class BirthdaysFragment extends Fragment {
     private List<Event> eventList = new ArrayList<>();
     private RecyclerView recyclerView;
     private EventsAdapter mAdapter;
@@ -48,7 +48,7 @@ public class HolidaysFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Bundle args = new Bundle();
-                args.putInt("EVENT_TYPE", EventType.HOLIDAY.ordinal());
+                args.putInt("EVENT_TYPE", EventType.BIRTHDAY.ordinal());
 
                 AddNewEventFragment anef = new AddNewEventFragment();
                 anef.setArguments(args);
@@ -63,15 +63,15 @@ public class HolidaysFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        fragmentTitle = getResources().getString(R.string.holidays_title);
+        fragmentTitle = getResources().getString(R.string.birthdays_title);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(fragmentTitle);
-        dataService = new EventDataService(EventType.HOLIDAY);
+        dataService = new EventDataService(EventType.BIRTHDAY);
         sorterService = new EventListSorterService();
         recyclerView = getView().findViewById(R.id.main_recycler_2);
 
         requestData();
 
-        mAdapter = new EventsAdapter(eventList, getActivity(), EventType.HOLIDAY);
+        mAdapter = new EventsAdapter(eventList, getActivity(), EventType.BIRTHDAY);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -82,7 +82,7 @@ public class HolidaysFragment extends Fragment {
 
     private void requestData(){
         if(dataService.isEmpty()){
-            eventList = TemplateDataService.getHolidaysData();
+            eventList = TemplateDataService.getBirthdaysData();
         }
         else{
             eventList = dataService.getAll();

@@ -26,6 +26,8 @@
     <string name="upcoming_title">Upcoming events</string>
     <string name="holiday_details_title">Time until holiday</string>
     <string name="add_holiday_title">Add new holiday</string>
+    <string name="birthday_details_title">Time until birthday</string>
+    <string name="other_event_details_title">Time until event</string>
 
     <!-- Event list item -->
     <string name="event_list_item_date">Date:</string>

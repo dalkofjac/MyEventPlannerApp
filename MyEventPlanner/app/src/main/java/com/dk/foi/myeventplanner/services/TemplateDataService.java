@@ -54,4 +54,38 @@ public class TemplateDataService {
 
         return eventList;
     }
+
+    public static ArrayList<Event> getBirthdaysData() {
+        ArrayList<Event> eventList = new ArrayList<>();
+        Event event;
+        EventType type = EventType.BIRTHDAY;
+        String todayDate = DateManager.getTodayDate();
+
+        event = new Event(type, "Ronaldinho", "21/03", todayDate);
+        eventList.add(event);
+        event.save();
+
+        event = new Event(type, "Leo Messi", "24/06", todayDate);
+        eventList.add(event);
+        event.save();
+
+        return eventList;
+    }
+
+    public static ArrayList<Event> getOtherEventsData() {
+        ArrayList<Event> eventList = new ArrayList<>();
+        Event event;
+        EventType type = EventType.OTHER;
+        String todayDate = DateManager.getTodayDate();
+
+        event = new Event(type, "Other event one", "30/12", todayDate);
+        eventList.add(event);
+        event.save();
+
+        event = new Event(type, "Other event two", "05/08", todayDate);
+        eventList.add(event);
+        event.save();
+
+        return eventList;
+    }
 }

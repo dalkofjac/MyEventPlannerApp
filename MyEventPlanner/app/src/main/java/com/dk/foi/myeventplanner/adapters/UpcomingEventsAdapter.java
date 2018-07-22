@@ -12,25 +12,23 @@ import com.dk.foi.myeventplanner.R;
 
 import java.util.List;
 
-public class EventsAdapter extends RecyclerView.Adapter<EventsViewHolder> {
+public class UpcomingEventsAdapter extends RecyclerView.Adapter<UpcomingEventsViewHolder> {
     private List<Event> eventList;
     private Context context;
-    private EventType type;
 
-    public EventsAdapter(List<Event> eventList, Context context, EventType type) {
+    public UpcomingEventsAdapter(List<Event> eventList, Context context) {
         this.eventList = eventList;
         this.context = context;
-        this.type = type;
     }
 
     @Override
-    public EventsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public UpcomingEventsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_list_item,parent,false);
-        return new EventsViewHolder(view, context, type);
+        return new UpcomingEventsViewHolder(view, context, eventList);
     }
 
     @Override
-    public void onBindViewHolder(EventsViewHolder holder, int position) {
+    public void onBindViewHolder(UpcomingEventsViewHolder holder, int position) {
         Event event = eventList.get(position);
         holder.name.setText(event.getName());
         holder.date.setText(event.getDate());
