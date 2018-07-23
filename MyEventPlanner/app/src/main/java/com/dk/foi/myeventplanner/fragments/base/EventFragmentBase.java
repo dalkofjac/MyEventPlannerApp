@@ -1,7 +1,8 @@
-package com.dk.foi.myeventplanner.fragments;
+package com.dk.foi.myeventplanner.fragments.base;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,28 +13,57 @@ import android.view.ViewGroup;
 
 import com.dk.foi.data.entities.Event;
 import com.dk.foi.data.enums.EventType;
-import com.dk.foi.data.services.GeneralEventDataService;
+import com.dk.foi.data.services.EventDataService;
 import com.dk.foi.myeventplanner.R;
-import com.dk.foi.myeventplanner.adapters.UpcomingEventsAdapter;
+import com.dk.foi.myeventplanner.adapters.EventsAdapter;
+import com.dk.foi.myeventplanner.enums.FragmentLevel;
+import com.dk.foi.myeventplanner.fragments.AddNewEventFragment;
+import com.dk.foi.myeventplanner.helpers.FragmentStarter;
 import com.dk.foi.myeventplanner.services.EventListSorterService;
 import com.dk.foi.myeventplanner.services.TemplateDataService;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class UpcomingEventsFragment extends Fragment {
-    private List<Event> eventList = new ArrayList<>();
+public abstract class EventFragmentBase extends Fragment {
+    private final String defaultFragmentTitle = "Events";
+
     private RecyclerView recyclerView;
-    private UpcomingEventsAdapter mAdapter;
-    private GeneralEventDataService dataService;
+    private EventsAdapter mAdapter;
     private EventListSorterService sorterService;
+
+    @BindView(R.id.fab_event)
+    public FloatingActionButton fab;
+
+    private EventType eventType;
+
+    protected List<Event> eventList = new ArrayList<>();
+    protected EventDataService dataService;
+
+    public EventFragmentBase(EventType eventType) {
+        this.eventType = eventType;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_upcoming_event,container,false);
+        View view = inflater.inflate(R.layout.fragment_event,container,false);
         ButterKnife.bind(this, view);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle args = new Bundle();
+                args.putInt("EVENT_TYPE", eventType.ordinal());
+
+                AddNewEventFragment anef = new AddNewEventFragment();
+                anef.setArguments(args);
+
+                FragmentStarter.StartNewFragment(anef, getActivity(), FragmentLevel.LEVEL_TWO);
+            }
+        });
 
         return view;
     }
@@ -42,13 +72,14 @@ public class UpcomingEventsFragment extends Fragment {
     public void onStart() {
         super.onStart();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getFragmentTitle());
-        dataService = new GeneralEventDataService();
+
+        dataService = new EventDataService(eventType);
         sorterService = new EventListSorterService();
         recyclerView = getView().findViewById(R.id.main_recycler_2);
 
         requestData();
 
-        mAdapter = new UpcomingEventsAdapter(eventList, getActivity());
+        mAdapter = new EventsAdapter(eventList, getActivity(), eventType);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -57,24 +88,18 @@ public class UpcomingEventsFragment extends Fragment {
         mAdapter.notifyDataSetChanged();
     }
 
-    private void requestData(){
+    protected void requestData(){
         if(dataService.isEmpty()){
-            eventList.addAll(TemplateDataService.getTemplateData(EventType.HOLIDAY));
-            eventList.addAll(TemplateDataService.getTemplateData(EventType.BIRTHDAY));
-            eventList.addAll(TemplateDataService.getTemplateData(EventType.OTHER));
+            eventList = TemplateDataService.getTemplateData(eventType);
         }
         else{
             eventList = dataService.getAll();
         }
         eventList = sorterService.attachYears(eventList);
         eventList = sorterService.sortTheList(eventList);
-
-        while(eventList.size()!=5){
-            eventList.remove(eventList.size()-1);
-        }
     }
 
-    private String getFragmentTitle() {
-        return getResources().getString(R.string.upcoming_title);
+    protected String getFragmentTitle() {
+        return defaultFragmentTitle;
     }
 }

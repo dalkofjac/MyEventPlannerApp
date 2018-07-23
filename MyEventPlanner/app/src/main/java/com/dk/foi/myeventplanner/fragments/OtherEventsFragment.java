@@ -17,6 +17,7 @@ import com.dk.foi.data.services.EventDataService;
 import com.dk.foi.myeventplanner.R;
 import com.dk.foi.myeventplanner.adapters.EventsAdapter;
 import com.dk.foi.myeventplanner.enums.FragmentLevel;
+import com.dk.foi.myeventplanner.fragments.base.EventFragmentBase;
 import com.dk.foi.myeventplanner.helpers.FragmentStarter;
 import com.dk.foi.myeventplanner.services.EventListSorterService;
 import com.dk.foi.myeventplanner.services.TemplateDataService;
@@ -27,67 +28,19 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class OtherEventsFragment extends Fragment {
-    private List<Event> eventList = new ArrayList<>();
-    private RecyclerView recyclerView;
-    private EventsAdapter mAdapter;
-    private EventDataService dataService;
-    private EventListSorterService sorterService;
+public class OtherEventsFragment extends EventFragmentBase {
 
-    @BindView(R.id.fab_event)
-    public FloatingActionButton fab;
-
-    private String fragmentTitle;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_event,container,false);
-        ButterKnife.bind(this, view);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle args = new Bundle();
-                args.putInt("EVENT_TYPE", EventType.OTHER.ordinal());
-
-                AddNewEventFragment anef = new AddNewEventFragment();
-                anef.setArguments(args);
-
-                FragmentStarter.StartNewFragment(anef, getActivity(), FragmentLevel.LEVEL_TWO);
-            }
-        });
-
-        return view;
+    public OtherEventsFragment() {
+        super(EventType.OTHER);
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        fragmentTitle = getResources().getString(R.string.other_events_title);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(fragmentTitle);
-        dataService = new EventDataService(EventType.OTHER);
-        sorterService = new EventListSorterService();
-        recyclerView = getView().findViewById(R.id.main_recycler_2);
-
-        requestData();
-
-        mAdapter = new EventsAdapter(eventList, getActivity(), EventType.OTHER);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
-
-        mAdapter.notifyDataSetChanged();
+    public String getFragmentTitle() {
+        return getResources().getString(R.string.other_events_title);
     }
 
-    private void requestData(){
-        if(dataService.isEmpty()){
-            eventList = TemplateDataService.getOtherEventsData();
-        }
-        else{
-            eventList = dataService.getAll();
-        }
-        eventList = sorterService.attachYears(eventList);
-        eventList = sorterService.sortTheList(eventList);
+    @Override
+    protected void requestData(){
+        super.requestData();
     }
 }
