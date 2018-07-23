@@ -33,13 +33,15 @@
     <string name="event_list_item_date">Date:</string>
 
     <!-- Event details fragment -->
-    <string name="event_comes_in">comes in:</string>
     <string name="event_days_general">DAYS</string>
     <string name="event_or_general">or</string>
     <string name="event_hours_general">HOURS</string>
     <string name="event_delete">Delete event</string>
     <string name="event_end_text">Today!</string>
     <string name="event_created">Created:</string>
+    <string name="event_details_subtitle_HOLIDAY">is coming in:</string>
+    <string name="event_details_subtitle_BIRTHDAY">is celebrating birthday in:</string>
+    <string name="event_details_subtitle_OTHER">is happening in:</string>
 
     <!-- Add new event fragment -->
     <string name="add_event_date">Date (ex. 05/11)</string>

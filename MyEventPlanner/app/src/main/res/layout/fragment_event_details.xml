@@ -53,9 +53,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="10dp"
-                    android:text="@string/event_comes_in"
                     android:textAlignment="center"
-                    android:textSize="25sp" />
+                    android:textSize="18sp"
+                    tools:text="happens in:" />
 
             </LinearLayout>
 
@@ -109,7 +109,7 @@
                     android:layout_marginTop="10dp"
                     android:text="@string/event_or_general"
                     android:textAlignment="center"
-                    android:textSize="25sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
