@@ -45,27 +45,27 @@
                 android:layout_marginBottom="5dp">
 
                 <Button
-                    android:text="@string/nav_drawer_upcoming"
                     android:id="@+id/button_ms_upcoming"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:textStyle="normal|bold|italic"
                     android:layout_width="50dp"
                     android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="@string/main_screen_upcoming"
                     android:textColor="#fff"
-                    android:background="@color/colorPrimary" />
+                    android:textStyle="normal|bold|italic" />
 
                 <Button
-                    android:text="@string/nav_drawer_holidays"
                     android:id="@+id/button_ms_holiday"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:textStyle="normal|bold|italic"
-                    android:layout_height="120dp"
                     android:layout_width="50dp"
-                    android:textColor="#fff"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
                     android:background="@color/colorPrimary"
-                    android:layout_marginLeft="5dp" />
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="@string/main_screen_holidays"
+                    android:textColor="#fff"
+                    android:textStyle="normal|bold|italic" />
 
             </LinearLayout>
 
@@ -76,27 +76,27 @@
                 android:id="@+id/secondRowLayout">
 
                 <Button
-                    android:text="@string/nav_drawer_birthday"
                     android:id="@+id/button_ms_birthday"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:textStyle="normal|bold|italic"
-                    android:layout_height="120dp"
                     android:layout_width="50dp"
-                    android:textColor="#fff"
+                    android:layout_height="120dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
                     android:background="@color/colorPrimary"
-                    android:layout_marginRight="5dp" />
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="@string/main_screen_birthday"
+                    android:textColor="#fff"
+                    android:textStyle="normal|bold|italic" />
 
                 <Button
-                    android:text="@string/nav_drawer_other"
                     android:id="@+id/button_ms_other"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:textStyle="normal|bold|italic"
-                    android:layout_height="120dp"
                     android:layout_width="50dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="@string/main_screen_other"
                     android:textColor="#fff"
-                    android:background="@color/colorPrimary" />
+                    android:textStyle="normal|bold|italic" />
 
             </LinearLayout>
         </LinearLayout>

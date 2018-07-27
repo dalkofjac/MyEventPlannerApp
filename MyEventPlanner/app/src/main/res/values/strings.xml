@@ -12,7 +12,7 @@
     <string name="nav_drawer_upcoming">Upcoming</string>
     <string name="nav_drawer_holidays">Holidays</string>
     <string name="nav_drawer_birthday">Birthdays</string>
-    <string name="nav_drawer_other">Other</string>
+    <string name="nav_drawer_other">Other events</string>
 
     <!-- Navigation menu -->
     <string name="action_settings">Settings</string>
@@ -26,6 +26,8 @@
     <string name="upcoming_title">Upcoming events</string>
     <string name="holiday_details_title">Time until holiday</string>
     <string name="add_holiday_title">Add new holiday</string>
+    <string name="add_birthday_title">Add new birthday</string>
+    <string name="add_other_event_title">Add new event</string>
     <string name="birthday_details_title">Time until birthday</string>
     <string name="other_event_details_title">Time until event</string>
     <string name="about_app_title">About application</string>
@@ -40,9 +42,15 @@
     <string name="event_delete">Delete event</string>
     <string name="event_end_text">Today!</string>
     <string name="event_created">Created:</string>
-    <string name="event_details_subtitle_HOLIDAY">is coming in:</string>
-    <string name="event_details_subtitle_BIRTHDAY">is celebrating birthday in:</string>
-    <string name="event_details_subtitle_OTHER">is happening in:</string>
+    <string name="event_details_subtitle_HOLIDAY">is coming in</string>
+    <string name="event_details_subtitle_BIRTHDAY">is celebrating birthday in</string>
+    <string name="event_details_subtitle_OTHER">is happening in</string>
+
+    <!-- Main screen fragment -->
+    <string name="main_screen_upcoming">Upcoming</string>
+    <string name="main_screen_holidays">Holidays</string>
+    <string name="main_screen_birthday">Birthdays</string>
+    <string name="main_screen_other">Other</string>
 
     <!-- Add new event fragment -->
     <string name="add_event_date">Date (ex. 05/11)</string>
@@ -65,7 +73,7 @@
     <string name="app_project">Project MyEventPlannerApp</string>
     <string name="contact_general">CONTACT</string>
     <string name="feedback_message">Found a bug or saw a place for improvement? Contact us!</string>
-    <string name="choose_email_client">Please choose email client ...</string>
+    <string name="choose_email_client">Please choose email client …</string>
     <string name="email_error_msg">Unfortunately, no email client was found on your device.</string>
 
     <!-- Dialogs -->
@@ -75,5 +83,6 @@
 
     <!-- Other -->
     <string name="image_default_desc">Image</string>
+    <string name="app_lang_pref">Preferred application language</string>
 
 </resources>

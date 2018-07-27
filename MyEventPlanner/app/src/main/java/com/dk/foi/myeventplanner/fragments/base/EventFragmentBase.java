@@ -58,10 +58,10 @@ public abstract class EventFragmentBase extends Fragment {
                 Bundle args = new Bundle();
                 args.putInt("EVENT_TYPE", eventType.ordinal());
 
-                AddNewEventFragment anef = new AddNewEventFragment();
-                anef.setArguments(args);
+                AddNewEventFragment af = new AddNewEventFragment();
+                af.setArguments(args);
 
-                FragmentStarter.StartNewFragment(anef, getActivity(), FragmentLevel.LEVEL_TWO);
+                FragmentStarter.StartNewFragment(af, getActivity(), FragmentLevel.LEVEL_TWO);
             }
         });
 

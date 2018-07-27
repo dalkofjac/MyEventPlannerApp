@@ -33,7 +33,7 @@
                 android:id="@+id/textView_event_name"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="25dp"
+                android:textSize="25sp"
                 tools:text="EVENT"
                 android:textColor="#ffffff"
                 android:textStyle="normal|bold" />
@@ -51,20 +51,21 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView_date_info"
                 android:layout_weight="1"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textAlignment="textEnd"
                 android:text="@string/event_list_item_date"
                 android:textColor="#ffffff" />
 
             <TextView
+                android:id="@+id/textView_event_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView_event_date"
                 android:layout_weight="1"
-                android:textSize="16dp"
-                tools:text="25.12.2017."
                 android:paddingLeft="10dp"
-                android:textColor="#ffffff" />
+                android:paddingRight="10dp"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                tools:text="25.12.2017." />
         </LinearLayout>
 
     </LinearLayout>

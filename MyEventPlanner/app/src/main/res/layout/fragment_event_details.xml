@@ -82,7 +82,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/thin_line" />
+                    app:srcCompat="@drawable/thin_line"
+                    android:contentDescription="@string/image_default_desc"/>
 
                 <TextView
                     android:id="@+id/textView_event_days"
@@ -100,7 +101,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/thin_line" />
+                    app:srcCompat="@drawable/thin_line"
+                    android:contentDescription="@string/image_default_desc"/>
 
                 <TextView
                     android:id="@+id/textView_event_or_general"
@@ -135,7 +137,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/thin_line" />
+                    app:srcCompat="@drawable/thin_line"
+                    android:contentDescription="@string/image_default_desc"/>
 
                 <TextView
                     android:id="@+id/textView_event_timer"
@@ -154,7 +157,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/thin_line" />
+                    app:srcCompat="@drawable/thin_line"
+                    android:contentDescription="@string/image_default_desc"/>
             </LinearLayout>
 
             <LinearLayout

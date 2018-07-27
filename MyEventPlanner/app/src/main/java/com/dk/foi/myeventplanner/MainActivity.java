@@ -1,9 +1,10 @@
 package com.dk.foi.myeventplanner;
 
 import android.app.FragmentManager;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.dk.foi.myeventplanner.activities.AppPreferenceActivity;
 import com.dk.foi.myeventplanner.enums.FragmentLevel;
 import com.dk.foi.myeventplanner.fragments.AboutAppFragment;
 import com.dk.foi.myeventplanner.fragments.BirthdaysFragment;
@@ -22,17 +24,23 @@ import com.dk.foi.myeventplanner.fragments.MainScreenFragment;
 import com.dk.foi.myeventplanner.fragments.OtherEventsFragment;
 import com.dk.foi.myeventplanner.fragments.UpcomingEventsFragment;
 import com.dk.foi.myeventplanner.helpers.FragmentStarter;
+import com.dk.foi.myeventplanner.helpers.Util;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener {
-    private FragmentManager mFragmentManager;
+public class MainActivity extends AppCompatActivity implements
+        NavigationView.OnNavigationItemSelectedListener,
+        FragmentManager.OnBackStackChangedListener,
+        SharedPreferences.OnSharedPreferenceChangeListener {
+
+    private FragmentManager fragmentManager;
     private ActionBarDrawerToggle toggle;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private Toolbar toolbar;
+    private Util util = new Util();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +50,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mFragmentManager = getFragmentManager();
-        mFragmentManager.addOnBackStackChangedListener(this);
+        fragmentManager = getFragmentManager();
+        fragmentManager.addOnBackStackChangedListener(this);
 
         drawer = findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(
@@ -53,6 +61,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        util.setLanguage(this);
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .registerOnSharedPreferenceChangeListener(this);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,19 +84,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FlowManager.init(new FlowConfig.Builder(this).build());
 
         MainScreenFragment msf = new MainScreenFragment();
-        mFragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        fragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
         FragmentStarter.StartNewFragment(msf, this, FragmentLevel.INDEX);
     }
 
     @Override
     public void onBackPressed() {
-        int backStackCount = mFragmentManager.getBackStackEntryCount();
+        int backStackCount = fragmentManager.getBackStackEntryCount();
         if (backStackCount>=2){
             if(drawer.isDrawerOpen(GravityCompat.START)){
                 drawer.closeDrawer(GravityCompat.START);
             }
             else {
-                mFragmentManager.popBackStack();
+                fragmentManager.popBackStack();
             }
         } else {
             if (drawer.isDrawerOpen(GravityCompat.START)){
@@ -106,7 +118,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(this, AppPreferenceActivity.class);
+            startActivity(intent);
         } else if (id == R.id.action_about) {
             AboutAppFragment af = new AboutAppFragment();
             FragmentStarter.StartNewFragment(af, this, FragmentLevel.LEVEL_ONE);
@@ -123,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (id) {
             case R.id.nav_start:
                 MainScreenFragment msf = new MainScreenFragment();
-                mFragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 FragmentStarter.StartNewFragment(msf, this, FragmentLevel.INDEX);
                 break;
             case R.id.nav_upcoming:
@@ -152,8 +165,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackStackChanged() {
-        toggle.setDrawerIndicatorEnabled(mFragmentManager.getBackStackEntryCount()==1 || mFragmentManager.getBackStackEntryCount()==2);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(mFragmentManager.getBackStackEntryCount()>2);
+        toggle.setDrawerIndicatorEnabled(fragmentManager.getBackStackEntryCount()==1
+                || fragmentManager.getBackStackEntryCount()==2);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(fragmentManager.getBackStackEntryCount()>2);
         toggle.syncState();
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        util.setLanguage(this);
+        this.recreate();
     }
 }

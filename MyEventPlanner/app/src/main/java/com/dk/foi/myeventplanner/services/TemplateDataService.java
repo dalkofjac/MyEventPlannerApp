@@ -16,23 +16,23 @@ public class TemplateDataService {
         String todayDate = DateManager.getTodayDate();
 
         if(type == EventType.HOLIDAY) {
-            event = new Event(type, "Nova godina", "01/01", todayDate);
+            event = new Event(type, "New Years", "01/01", todayDate);
             eventList.add(event);
             event.save();
 
-            event = new Event(type, "Valentinovo", "14/02", todayDate);
+            event = new Event(type, "Valentine's day", "14/02", todayDate);
             eventList.add(event);
             event.save();
 
-            event = new Event(type, "Praznik rada", "01/05", todayDate);
+            event = new Event(type, "Labor Day", "01/05", todayDate);
             eventList.add(event);
             event.save();
 
-            event = new Event(type, "Noć vještica", "31/10", todayDate);
+            event = new Event(type, "Halloween", "31/10", todayDate);
             eventList.add(event);
             event.save();
 
-            event = new Event(type, "Božić", "25/12", todayDate);
+            event = new Event(type, "Christmas", "25/12", todayDate);
             eventList.add(event);
             event.save();
         } else if(type == EventType.BIRTHDAY) {
@@ -44,11 +44,11 @@ public class TemplateDataService {
             eventList.add(event);
             event.save();
         } else if(type == EventType.OTHER) {
-            event = new Event(type, "Other event one", "30/12", todayDate);
+            event = new Event(type, "Summer Start", "21/06", todayDate);
             eventList.add(event);
             event.save();
 
-            event = new Event(type, "Other event two", "05/08", todayDate);
+            event = new Event(type, "Winter Start", "21/12", todayDate);
             eventList.add(event);
             event.save();
         }

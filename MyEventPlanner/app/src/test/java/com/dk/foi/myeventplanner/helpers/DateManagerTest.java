@@ -18,7 +18,7 @@ public class DateManagerTest {
     private String dateString;
     private Date actualDate;
     private Date expectedDate;
-    private String todaysDate;
+    private String currentDate;
 
     @Before
     public void setUp() {
@@ -56,10 +56,10 @@ public class DateManagerTest {
 
     @Test
     public void getTodayDate() throws Exception {
-        todaysDate = cal.get(Calendar.DAY_OF_MONTH)
+        currentDate = cal.get(Calendar.DAY_OF_MONTH)
                 + "/" + (cal.get(Calendar.MONTH) + 1)
                 + "/" + cal.get(Calendar.YEAR);
-        actualDate = dateFormat.parse(todaysDate);
+        actualDate = dateFormat.parse(currentDate);
         expectedDate = dateFormat.parse(DateManager.getTodayDate());
 
         assertEquals("DateManager failed to return correct today's date.", actualDate, expectedDate);

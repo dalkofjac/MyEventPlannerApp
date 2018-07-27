@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- General -->
+    <string name="app_name">My Event Planner</string>
+
+    <!-- Navigation drawer -->
+    <string name="nav_drawer_open">Otvori navigation drawer</string>
+    <string name="nav_drawer_close">Zatvori navigation drawer</string>
+    <string name="nav_header_title">My Event Planner</string>
+    <string name="nav_header_subtitle">info.myeventplanner@gmail.com</string>
+    <string name="nav_header_desc">Navigation zaglavlje</string>
+    <string name="nav_drawer_main">Početna</string>
+    <string name="nav_drawer_upcoming">Uskoro</string>
+    <string name="nav_drawer_holidays">Blagdani</string>
+    <string name="nav_drawer_birthday">Rođendani</string>
+    <string name="nav_drawer_other">Ostali događaji</string>
+
+    <!-- Navigation menu -->
+    <string name="action_settings">Postavke</string>
+    <string name="action_about">O aplikaciji</string>
+
+    <!-- Fragment titles -->
+    <string name="main_screen_title">My Event Planner</string>
+    <string name="holidays_title">Blagdani</string>
+    <string name="birthdays_title">Rođendani</string>
+    <string name="other_events_title">Ostali događaji</string>
+    <string name="upcoming_title">Uskoro</string>
+    <string name="holiday_details_title">Vrijeme do blagdana</string>
+    <string name="add_holiday_title">Dodaj novi blagdan</string>
+    <string name="add_birthday_title">Dodaj novi rođendan</string>
+    <string name="add_other_event_title">Dodaj novi događaj</string>
+    <string name="birthday_details_title">Vrijeme do rođendana</string>
+    <string name="other_event_details_title">Vrijeme do događaja</string>
+    <string name="about_app_title">O aplikaciji</string>
+
+    <!-- Event list item -->
+    <string name="event_list_item_date">Datum:</string>
+
+    <!-- Event details fragment -->
+    <string name="event_days_general">DANA</string>
+    <string name="event_or_general">ili</string>
+    <string name="event_hours_general">SATI</string>
+    <string name="event_delete">Obriši</string>
+    <string name="event_end_text">Danas!</string>
+    <string name="event_created">Kreirano:</string>
+    <string name="event_details_subtitle_HOLIDAY">dolazi za</string>
+    <string name="event_details_subtitle_BIRTHDAY">slavi rođendan za</string>
+    <string name="event_details_subtitle_OTHER">će se dogoditi za</string>
+
+    <!-- Main screen fragment -->
+    <string name="main_screen_upcoming">Uskoro</string>
+    <string name="main_screen_holidays">Blagdani</string>
+    <string name="main_screen_birthday">Rođendani</string>
+    <string name="main_screen_other">Ostalo</string>
+
+    <!-- Add new event fragment -->
+    <string name="add_event_date">Datum (npr. 05/11)</string>
+    <string name="add_event_name">Naziv</string>
+    <string name="add_event_add">Dodaj</string>
+    <string name="added_event">Događaj uspješno dodan!</string>
+    <string name="bad_input">Pogrešno unešeni podaci!</string>
+    <string name="bad_date_format">Pogrešan format datuma! (dd/mm)</string>
+    <string name="invalid_date">Nepostojeći datum!</string>
+    <string name="name_alr_exist">Naziv već postoji!</string>
+    <string name="add_event_tip">Godina će biti automatski izračunata prema današnjem datumu.</string>
+
+    <!-- About app -->
+    <string name="app_name_general">APLIKACIJA</string>
+    <string name="app_version_general">Verzija</string>
+    <string name="app_version">1.0.0</string>
+    <string name="app_author_general">Autor</string>
+    <string name="app_author">Dalibor K.</string>
+    <string name="app_project_general">Projekt</string>
+    <string name="app_project">Projekt MyEventPlannerApp</string>
+    <string name="contact_general">KONTAKT</string>
+    <string name="feedback_message">Pronašli ste bug ili vidite prostora za poboljšanje? Kontaktirajte nas!</string>
+    <string name="choose_email_client">Molimo odaberite email klijent …</string>
+    <string name="email_error_msg">Nažalost, ni jedan email klijent nije pronađen na vašem uređaju.</string>
+
+    <!-- Dialogs -->
+    <string name="removal_question">Želite li obrisati događaj?</string>
+    <string name="remove">Obriši</string>
+    <string name="cancel">Odustani</string>
+
+    <!-- Other -->
+    <string name="image_default_desc">Slika</string>
+    <string name="app_lang_pref">Željeni jezik aplikacije</string>
+</resources>
