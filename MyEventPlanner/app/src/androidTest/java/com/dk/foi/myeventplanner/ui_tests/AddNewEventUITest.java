@@ -28,7 +28,7 @@ public class AddNewEventUITest {
             new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void ensureButtonAddNewEventWorks() {
+    public void ensureButtonAddNewEventWorks() throws Exception {
         onView(withId(R.id.button_ms_holiday)).perform(click());
         onView(withId(R.id.fab_event)).perform(click());
 

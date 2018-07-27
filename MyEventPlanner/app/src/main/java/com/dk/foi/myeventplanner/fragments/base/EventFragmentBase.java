@@ -34,6 +34,7 @@ public abstract class EventFragmentBase extends Fragment {
     private RecyclerView recyclerView;
     private EventsAdapter mAdapter;
     private EventListSorterService sorterService;
+    private TemplateDataService templateDataService;
 
     @BindView(R.id.fab_event)
     public FloatingActionButton fab;
@@ -74,6 +75,7 @@ public abstract class EventFragmentBase extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getFragmentTitle());
 
         dataService = new EventDataService(eventType);
+        templateDataService = new TemplateDataService();
         sorterService = new EventListSorterService();
         recyclerView = getView().findViewById(R.id.main_recycler_2);
 
@@ -90,7 +92,7 @@ public abstract class EventFragmentBase extends Fragment {
 
     protected void requestData(){
         if(dataService.isEmpty()){
-            eventList = TemplateDataService.getTemplateData(eventType);
+            eventList = templateDataService.getTemplateData(eventType);
         }
         else{
             eventList = dataService.getAll();

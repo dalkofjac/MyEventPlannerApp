@@ -1,4 +1,4 @@
-package com.dk.foi.myeventplanner;
+package com.dk.foi.myeventplanner.integration_tests;
 
 import android.app.Fragment;
 import android.support.test.filters.MediumTest;
@@ -42,5 +42,14 @@ public class MainActivityTest {
 
         View holidaysButton = activity.findViewById(R.id.button_ms_holiday);
         assertThat("Holidays button was not initialised.", holidaysButton, notNullValue());
+
+        View birthdaysButton = activity.findViewById(R.id.button_ms_birthday);
+        assertThat("Birthdays button was not initialised.", birthdaysButton, notNullValue());
+
+        View otherEventsButton = activity.findViewById(R.id.button_ms_other);
+        assertThat("Other events button was not initialised.", otherEventsButton, notNullValue());
+
+        View upcomingEventsButton = activity.findViewById(R.id.button_ms_upcoming);
+        assertThat("Upcoming events button was not initialised.", upcomingEventsButton, notNullValue());
     }
 }

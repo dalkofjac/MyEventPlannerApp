@@ -28,6 +28,7 @@ public class UpcomingEventsFragment extends Fragment {
     private RecyclerView recyclerView;
     private UpcomingEventsAdapter mAdapter;
     private GeneralEventDataService dataService;
+    private TemplateDataService templateDataService;
     private EventListSorterService sorterService;
 
     @Override
@@ -43,6 +44,7 @@ public class UpcomingEventsFragment extends Fragment {
         super.onStart();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getFragmentTitle());
         dataService = new GeneralEventDataService();
+        templateDataService = new TemplateDataService();
         sorterService = new EventListSorterService();
         recyclerView = getView().findViewById(R.id.main_recycler_2);
 
@@ -59,9 +61,9 @@ public class UpcomingEventsFragment extends Fragment {
 
     private void requestData(){
         if(dataService.isEmpty()){
-            eventList.addAll(TemplateDataService.getTemplateData(EventType.HOLIDAY));
-            eventList.addAll(TemplateDataService.getTemplateData(EventType.BIRTHDAY));
-            eventList.addAll(TemplateDataService.getTemplateData(EventType.OTHER));
+            eventList.addAll(templateDataService.getTemplateData(EventType.HOLIDAY));
+            eventList.addAll(templateDataService.getTemplateData(EventType.BIRTHDAY));
+            eventList.addAll(templateDataService.getTemplateData(EventType.OTHER));
         }
         else{
             eventList = dataService.getAll();

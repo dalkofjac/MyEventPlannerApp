@@ -67,6 +67,6 @@ public class EventListSorterServiceTest {
         actualNumberOfEvents = eventList.size();
         expectedNumberOfEvents = retrievedEventList.size();
 
-        assertEquals("Event list sorter returned wrong number of list objects.", actualNumberOfEvents, expectedNumberOfEvents);
+        assertEquals("Event list sorter returned wrong number of list objects.", expectedNumberOfEvents, actualNumberOfEvents);
     }
 }
