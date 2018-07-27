@@ -4,9 +4,7 @@ import com.dk.foi.data.entities.Event;
 import com.dk.foi.data.enums.EventType;
 import com.dk.foi.myeventplanner.helpers.DateManager;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class TemplateDataService {
 

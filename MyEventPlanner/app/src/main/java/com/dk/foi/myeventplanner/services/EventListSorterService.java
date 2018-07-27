@@ -3,14 +3,10 @@ package com.dk.foi.myeventplanner.services;
 import com.dk.foi.data.entities.Event;
 import com.dk.foi.myeventplanner.helpers.DateManager;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class EventListSorterService {
 

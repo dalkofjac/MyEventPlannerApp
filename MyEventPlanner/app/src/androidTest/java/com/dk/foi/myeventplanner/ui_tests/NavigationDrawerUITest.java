@@ -12,12 +12,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static android.support.test.espresso.action.ViewActions.click;
 import android.support.test.espresso.contrib.NavigationViewActions;
-import static android.support.test.espresso.action.ViewActions.swipeUp;
+
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.contrib.DrawerMatchers.isClosed;
-import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.Espresso.onView;
 

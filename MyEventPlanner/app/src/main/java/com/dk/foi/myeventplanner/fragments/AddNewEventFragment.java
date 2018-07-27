@@ -54,7 +54,7 @@ public class AddNewEventFragment extends Fragment {
 
         if(eventType == EventType.HOLIDAY) {
             fragmentTitle = getResources().getString(R.string.add_holiday_title);
-        } else if (eventType == eventType.BIRTHDAY) {
+        } else if (eventType == EventType.BIRTHDAY) {
             fragmentTitle = getResources().getString(R.string.add_birthday_title);
         } else {
             fragmentTitle = getResources().getString(R.string.add_other_event_title);

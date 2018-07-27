@@ -71,8 +71,8 @@ public class UpcomingEventsViewHolder extends RecyclerView.ViewHolder implements
 
     private EventType getEventType(List<Event> eventList, String name, String date) {
         for(int i = 0; i< eventList.size(); i++) {
-            if(eventList.get(i).getName() == name
-                    && eventList.get(i).getDate() == date) {
+            if(eventList.get(i).getName().equals(name)
+                    && eventList.get(i).getDate().equals(date)) {
                 return eventList.get(i).getType();
             }
         }

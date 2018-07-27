@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dk.foi.data.entities.Event;
-import com.dk.foi.data.enums.EventType;
 import com.dk.foi.myeventplanner.R;
 
 import java.util.List;

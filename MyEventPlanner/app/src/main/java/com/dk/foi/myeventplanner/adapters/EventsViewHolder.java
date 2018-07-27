@@ -11,7 +11,6 @@ import com.dk.foi.data.enums.EventType;
 import com.dk.foi.myeventplanner.R;
 import com.dk.foi.myeventplanner.enums.FragmentLevel;
 import com.dk.foi.myeventplanner.fragments.BirthdayDetailsFragment;
-import com.dk.foi.myeventplanner.fragments.BirthdaysFragment;
 import com.dk.foi.myeventplanner.fragments.HolidayDetailsFragment;
 import com.dk.foi.myeventplanner.fragments.OtherEventDetailsFragment;
 import com.dk.foi.myeventplanner.helpers.FragmentStarter;

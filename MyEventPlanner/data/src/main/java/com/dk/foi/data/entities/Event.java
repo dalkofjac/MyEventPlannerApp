@@ -9,11 +9,7 @@ import com.raizlabs.android.dbflow.annotation.Index;
 import com.raizlabs.android.dbflow.annotation.NotNull;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
-import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.structure.BaseModel;
-
-import java.util.Date;
-import java.util.List;
 
 @Table(database = MainDatabase.class)
 public class Event extends BaseModel implements IdentifiableEntity, DatedEntity {

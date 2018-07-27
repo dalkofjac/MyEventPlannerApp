@@ -54,7 +54,7 @@
     <string name="main_screen_other">Ostalo</string>
 
     <!-- Add new event fragment -->
-    <string name="add_event_date">Datum (npr. 05/11)</string>
+    <string name="add_event_date">Datum (npr. 23/08)</string>
     <string name="add_event_name">Naziv</string>
     <string name="add_event_add">Dodaj</string>
     <string name="added_event">Događaj uspješno dodan!</string>

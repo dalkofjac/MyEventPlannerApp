@@ -3,12 +3,12 @@ package com.dk.foi.data.services;
 import com.dk.foi.data.entities.Event;
 import com.dk.foi.data.entities.Event_Table;
 import com.dk.foi.data.enums.EventType;
-import com.dk.foi.data.interfaces.DataServiceBase;
+import com.dk.foi.data.interfaces.DataServiceInterface;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.List;
 
-public class EventDataService implements DataServiceBase{
+public class EventDataService implements DataServiceInterface {
     private EventType eventType;
 
     public EventDataService(EventType eventType) {

@@ -53,7 +53,7 @@
     <string name="main_screen_other">Other</string>
 
     <!-- Add new event fragment -->
-    <string name="add_event_date">Date (ex. 05/11)</string>
+    <string name="add_event_date">Date (ex. 23/08)</string>
     <string name="add_event_name">Name</string>
     <string name="add_event_add">Add</string>
     <string name="added_event">Event successfully added!</string>

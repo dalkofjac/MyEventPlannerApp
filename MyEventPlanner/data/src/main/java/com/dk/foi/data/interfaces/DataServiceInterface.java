@@ -4,7 +4,7 @@ import com.dk.foi.data.entities.Event;
 
 import java.util.List;
 
-public interface DataServiceBase {
+public interface DataServiceInterface {
     List<Event> getAll();
     Event get(int id);
     Event getByName(String name);
