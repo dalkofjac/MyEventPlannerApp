@@ -28,6 +28,7 @@
     <string name="add_holiday_title">Add new holiday</string>
     <string name="birthday_details_title">Time until birthday</string>
     <string name="other_event_details_title">Time until event</string>
+    <string name="about_app_title">About application</string>
 
     <!-- Event list item -->
     <string name="event_list_item_date">Date:</string>
@@ -53,6 +54,19 @@
     <string name="invalid_date">Nonexistent date!</string>
     <string name="name_alr_exist">Given name already exists!</string>
     <string name="add_event_tip">Year will be automatically calculated based on current date.</string>
+
+    <!-- About app -->
+    <string name="app_name_general">APPLICATION</string>
+    <string name="app_version_general">Version</string>
+    <string name="app_version">1.0.0</string>
+    <string name="app_author_general">Author</string>
+    <string name="app_author">Dalibor K.</string>
+    <string name="app_project_general">Project</string>
+    <string name="app_project">Project MyEventPlannerApp</string>
+    <string name="contact_general">CONTACT</string>
+    <string name="feedback_message">Found a bug or saw a place for improvement? Contact us!</string>
+    <string name="choose_email_client">Please choose email client ...</string>
+    <string name="email_error_msg">Unfortunately, no email client was found on your device.</string>
 
     <!-- Dialogs -->
     <string name="removal_question">Do you want to remove this event?</string>

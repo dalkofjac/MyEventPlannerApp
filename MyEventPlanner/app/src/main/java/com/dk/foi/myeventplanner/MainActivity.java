@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.dk.foi.myeventplanner.enums.FragmentLevel;
+import com.dk.foi.myeventplanner.fragments.AboutAppFragment;
 import com.dk.foi.myeventplanner.fragments.BirthdaysFragment;
 import com.dk.foi.myeventplanner.fragments.HolidaysFragment;
 import com.dk.foi.myeventplanner.fragments.MainScreenFragment;
@@ -107,7 +108,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.action_settings) {
             return true;
         } else if (id == R.id.action_about) {
-            return true;
+            AboutAppFragment af = new AboutAppFragment();
+            FragmentStarter.StartNewFragment(af, this, FragmentLevel.LEVEL_ONE);
         }
 
         return super.onOptionsItemSelected(item);
