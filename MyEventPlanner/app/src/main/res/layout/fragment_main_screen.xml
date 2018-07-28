@@ -12,13 +12,13 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="match_parent"
-            app:srcCompat="@mipmap/logo_icon"
             android:id="@+id/ImageView_ms_logo"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
             android:adjustViewBounds="false"
+            android:contentDescription="@string/image_default_desc"
             android:cropToPadding="false"
-            android:layout_height="75dp"
-            android:contentDescription="@string/image_default_desc" />
+            app:srcCompat="@mipmap/logo_icon" />
 
         <ImageView
             android:layout_height="20dp"
