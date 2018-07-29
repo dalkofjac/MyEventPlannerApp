@@ -3,7 +3,8 @@ package com.dk.foi.data.enums;
 public enum EventType {
     HOLIDAY,
     BIRTHDAY,
-    OTHER;
+    OTHER,
+    PERSONAL;
 
     public static EventType fromInteger(int x) {
         switch(x) {
@@ -13,6 +14,8 @@ public enum EventType {
                 return BIRTHDAY;
             case 2:
                 return OTHER;
+            case 3:
+                return PERSONAL;
         }
         return null;
     }

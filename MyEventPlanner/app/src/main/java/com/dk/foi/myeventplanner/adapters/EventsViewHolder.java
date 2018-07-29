@@ -13,6 +13,7 @@ import com.dk.foi.myeventplanner.enums.FragmentLevel;
 import com.dk.foi.myeventplanner.fragments.BirthdayDetailsFragment;
 import com.dk.foi.myeventplanner.fragments.HolidayDetailsFragment;
 import com.dk.foi.myeventplanner.fragments.OtherEventDetailsFragment;
+import com.dk.foi.myeventplanner.fragments.PersonalEventDetailsFragment;
 import com.dk.foi.myeventplanner.helpers.FragmentStarter;
 
 public class EventsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
@@ -53,6 +54,11 @@ public class EventsViewHolder extends RecyclerView.ViewHolder implements View.On
                 OtherEventDetailsFragment odf = new OtherEventDetailsFragment();
                 odf.setArguments(args);
                 FragmentStarter.StartNewFragment(odf, ((Activity)context), FragmentLevel.LEVEL_TWO);
+                break;
+            case PERSONAL:
+                PersonalEventDetailsFragment pdf = new PersonalEventDetailsFragment();
+                pdf.setArguments(args);
+                FragmentStarter.StartNewFragment(pdf, ((Activity)context), FragmentLevel.LEVEL_TWO);
                 break;
             default: break;
         }

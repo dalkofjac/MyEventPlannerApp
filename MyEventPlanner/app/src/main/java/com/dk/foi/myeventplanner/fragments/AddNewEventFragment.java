@@ -56,6 +56,8 @@ public class AddNewEventFragment extends Fragment {
             fragmentTitle = getResources().getString(R.string.add_holiday_title);
         } else if (eventType == EventType.BIRTHDAY) {
             fragmentTitle = getResources().getString(R.string.add_birthday_title);
+        } else if (eventType == EventType.PERSONAL){
+            fragmentTitle = getResources().getString(R.string.add_personal_event_title);
         } else {
             fragmentTitle = getResources().getString(R.string.add_other_event_title);
         }
@@ -98,6 +100,13 @@ public class AddNewEventFragment extends Fragment {
 
                 Toast.makeText(getActivity(), addingMsg, Toast.LENGTH_SHORT).show();
             }
+            if (eventType == EventType.PERSONAL && dateCheck(eventDate) == true) {
+                Event event = new Event(EventType.PERSONAL, eventName, eventDate, DateManager.getTodayDate());
+                addPersonalEvent(getActivity().getIntent().getStringExtra("USER_ID"), event);
+                getActivity().onBackPressed();
+
+                Toast.makeText(getActivity(), addingMsg, Toast.LENGTH_SHORT).show();
+            }
         }catch (Exception e){
             Toast.makeText(getActivity(), badInput, Toast.LENGTH_SHORT).show();
         }
@@ -130,5 +139,9 @@ public class AddNewEventFragment extends Fragment {
             }
         }
         return true;
+    }
+
+    private void addPersonalEvent(String userId, Event event){
+        // TODO
     }
 }

@@ -111,5 +111,12 @@
 
     <!-- Other -->
     <string name="image_default_desc">Image</string>
+    <string name="nav_drawer_logout">Logout</string>
+    <string name="main_screen_personal">Personal</string>
+    <string name="nav_drawer_personal">Personal events</string>
+    <string name="personal_events_title">Personal events</string>
+    <string name="add_personal_event_title">Add new personal event</string>
+    <string name="personal_event_details_title">Time until personal event</string>
+    <string name="event_details_subtitle_PERSONAL">is expected to happen in</string>
 
 </resources>

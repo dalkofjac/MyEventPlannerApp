@@ -17,6 +17,8 @@
     <string name="nav_drawer_user_options">Korisničke opcije</string>
     <string name="nav_drawer_login">Prijava</string>
     <string name="nav_drawer_registration">Registracija</string>
+    <string name="nav_drawer_logout">Odjava</string>
+    <string name="nav_drawer_personal">Privatni događaji</string>
 
 
     <!-- Navigation menu -->
@@ -37,6 +39,8 @@
     <string name="other_event_details_title">Vrijeme do događaja</string>
     <string name="about_app_title">O aplikaciji</string>
     <string name="register_title">Registracija</string>
+    <string name="personal_events_title">Privatni događaji</string>
+    <string name="personal_event_details_title">Vrijeme do privatnog događaja</string>
 
     <!-- Event list item -->
     <string name="event_list_item_date">Datum:</string>
@@ -51,12 +55,14 @@
     <string name="event_details_subtitle_HOLIDAY">dolazi za</string>
     <string name="event_details_subtitle_BIRTHDAY">slavi rođendan za</string>
     <string name="event_details_subtitle_OTHER">će se dogoditi za</string>
+    <string name="event_details_subtitle_PERSONAL">će se dogoditi za</string>
 
     <!-- Main screen fragment -->
     <string name="main_screen_upcoming">Uskoro</string>
     <string name="main_screen_holidays">Blagdani</string>
     <string name="main_screen_birthday">Rođendani</string>
     <string name="main_screen_other">Ostalo</string>
+    <string name="main_screen_personal">Privatno</string>
 
     <!-- Add new event fragment -->
     <string name="add_event_date">Datum (npr. 23/08)</string>
@@ -68,6 +74,7 @@
     <string name="invalid_date">Nepostojeći datum!</string>
     <string name="name_alr_exist">Naziv već postoji!</string>
     <string name="add_event_tip">Godina će biti automatski izračunata prema današnjem datumu.</string>
+    <string name="add_personal_event_title">Dodaj novi privatni događaj</string>
 
     <!-- About app -->
     <string name="app_name_general">APLIKACIJA</string>

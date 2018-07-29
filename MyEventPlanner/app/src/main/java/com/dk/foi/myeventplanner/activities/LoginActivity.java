@@ -1,5 +1,6 @@
 package com.dk.foi.myeventplanner.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
@@ -33,6 +34,10 @@ public class LoginActivity extends AppCompatActivity {
     }
     @OnClick(R.id.button_login)
     public void onLoginButtonClicked(){
+        Intent intent = new Intent(this, UserActivity.class);
+        startActivity(intent);
+        this.finish();
+
         // TODO
     }
 }
