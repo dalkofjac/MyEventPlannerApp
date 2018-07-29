@@ -33,4 +33,16 @@
             android:title="@string/nav_drawer_other" />
     </group>
 
+    <item android:title="@string/nav_drawer_user_options">
+        <menu>
+            <item
+                android:id="@+id/nav_login"
+                android:title="@string/nav_drawer_login" />
+            <item
+                android:id="@+id/nav_reg"
+                android:title="@string/nav_drawer_registration" />
+
+        </menu>
+    </item>
+
 </menu>

@@ -14,6 +14,10 @@
     <string name="nav_drawer_holidays">Blagdani</string>
     <string name="nav_drawer_birthday">Rođendani</string>
     <string name="nav_drawer_other">Ostali događaji</string>
+    <string name="nav_drawer_user_options">Korisničke opcije</string>
+    <string name="nav_drawer_login">Prijava</string>
+    <string name="nav_drawer_registration">Registracija</string>
+
 
     <!-- Navigation menu -->
     <string name="action_settings">Postavke</string>
@@ -32,6 +36,7 @@
     <string name="birthday_details_title">Vrijeme do rođendana</string>
     <string name="other_event_details_title">Vrijeme do događaja</string>
     <string name="about_app_title">O aplikaciji</string>
+    <string name="register_title">Registracija</string>
 
     <!-- Event list item -->
     <string name="event_list_item_date">Datum:</string>
@@ -77,12 +82,36 @@
     <string name="choose_email_client">Molimo odaberite email klijent …</string>
     <string name="email_error_msg">Nažalost, ni jedan email klijent nije pronađen na vašem uređaju.</string>
 
+    <!-- Login -->
+    <string name="login_type_username">Korisničko ime</string>
+    <string name="login_type_password">Lozinka</string>
+    <string name="login_button">Prijavi se</string>
+    <string name="login_powered_by">Powered by 000webhost.com © 2018</string>
+    <string name="login_success">Uspješna prijava!</string>
+    <string name="login_error">Pogrešno korisničko ime ili lozinka!</string>
+
+    <!-- Registration -->
+    <string name="register_general">Besplatno se registrirajte u aplikaciju već sada!</string>
+    <string name="register_name">Ime</string>
+    <string name="register_surname">Prezime</string>
+    <string name="register_email">Email adresa</string>
+    <string name="register_username">Korisniko ime</string>
+    <string name="reg_password">Lozinka</string>
+    <string name="register_button">Registriraj me</string>
+    <string name="register_success">Uspješna registracija!</string>
+    <string name="register_error">Pogrešan unos!</string>
+    <string name="register_user_exists">Korisničko ime već postoji!</string>
+    <string name="register_error_general">Došlo je do neočekivane pogreške, molimo pokušajte ponovo!</string>
+
     <!-- Dialogs -->
     <string name="removal_question">Želite li obrisati događaj?</string>
     <string name="remove">Obriši</string>
     <string name="cancel">Odustani</string>
 
+    <!-- Settings -->
+    <string name="app_lang_pref">Željeni jezik aplikacije</string>
+
     <!-- Other -->
     <string name="image_default_desc">Slika</string>
-    <string name="app_lang_pref">Željeni jezik aplikacije</string>
+
 </resources>

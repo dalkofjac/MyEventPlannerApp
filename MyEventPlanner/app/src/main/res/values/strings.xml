@@ -13,6 +13,9 @@
     <string name="nav_drawer_holidays">Holidays</string>
     <string name="nav_drawer_birthday">Birthdays</string>
     <string name="nav_drawer_other">Other events</string>
+    <string name="nav_drawer_user_options">User options</string>
+    <string name="nav_drawer_login">Login</string>
+    <string name="nav_drawer_registration">Register</string>
 
     <!-- Navigation menu -->
     <string name="action_settings">Settings</string>
@@ -31,6 +34,7 @@
     <string name="birthday_details_title">Time until birthday</string>
     <string name="other_event_details_title">Time until event</string>
     <string name="about_app_title">About application</string>
+    <string name="register_title">Registration</string>
 
     <!-- Event list item -->
     <string name="event_list_item_date">Date:</string>
@@ -76,13 +80,36 @@
     <string name="choose_email_client">Please choose email client …</string>
     <string name="email_error_msg">Unfortunately, no email client was found on your device.</string>
 
+    <!-- Login -->
+    <string name="login_type_username">Username</string>
+    <string name="login_type_password">Password</string>
+    <string name="login_button">Login</string>
+    <string name="login_powered_by">Powered by 000webhost.com © 2018</string>
+    <string name="login_success">Successful login!</string>
+    <string name="login_error">Wrong username or password!</string>
+
+    <!-- Registration -->
+    <string name="register_general">Make an application account, its free!</string>
+    <string name="register_name">First name</string>
+    <string name="register_surname">Last name</string>
+    <string name="register_email">Email address</string>
+    <string name="register_username">Username</string>
+    <string name="reg_password">Password</string>
+    <string name="register_button">Register</string>
+    <string name="register_success">Successful registration!</string>
+    <string name="register_error">Bad input!</string>
+    <string name="register_user_exists">Username already exists!</string>
+    <string name="register_error_general">There was an unexpected error, please try again!</string>
+
     <!-- Dialogs -->
     <string name="removal_question">Do you want to remove this event?</string>
     <string name="remove">Remove</string>
     <string name="cancel">Cancel</string>
 
+    <!-- Settings -->
+    <string name="app_lang_pref">Preferred application language</string>
+
     <!-- Other -->
     <string name="image_default_desc">Image</string>
-    <string name="app_lang_pref">Preferred application language</string>
 
 </resources>

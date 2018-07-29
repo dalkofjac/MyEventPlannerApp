@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layoutsHolder"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/topLayout">
+
+            <TextView
+                android:text="@string/register_general"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_reg_details"
+                android:textAlignment="textStart"
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="5dp"
+                android:textStyle="normal|italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/middleLayout">
+
+            <ImageView
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/thin_line"
+                android:id="@+id/thin_line_1"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editText_reg_name"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorPrimaryLight"
+                android:hint="@string/register_name" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editText_reg_surname"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorPrimaryLight"
+                android:hint="@string/register_surname" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:id="@+id/editText_reg_email"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorPrimaryLight"
+                android:hint="@string/register_email" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editText_reg_username"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorPrimaryLight"
+                android:hint="@string/register_username" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:id="@+id/editText_reg_password"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorPrimaryLight"
+                android:inputType="textPassword"
+                android:hint="@string/reg_password" />
+
+            <ImageView
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/thin_line"
+                android:id="@+id/thin_line_2"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/bottomLayout">
+
+            <Button
+                android:text="@string/register_button"
+                android:id="@+id/button_register"
+                android:elevation="0dp"
+                android:background="@color/colorAccent"
+                android:textColor="#fff"
+                android:layout_width="match_parent"
+                android:fontFamily="sans-serif-medium"
+                style="@android:style/Widget.Button"
+                android:textSize="18sp"
+                android:layout_height="wrap_content"
+                android:textStyle="normal|bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -16,12 +16,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.dk.foi.myeventplanner.activities.AppPreferenceActivity;
+import com.dk.foi.myeventplanner.activities.LoginActivity;
 import com.dk.foi.myeventplanner.enums.FragmentLevel;
 import com.dk.foi.myeventplanner.fragments.AboutAppFragment;
 import com.dk.foi.myeventplanner.fragments.BirthdaysFragment;
 import com.dk.foi.myeventplanner.fragments.HolidaysFragment;
 import com.dk.foi.myeventplanner.fragments.MainScreenFragment;
 import com.dk.foi.myeventplanner.fragments.OtherEventsFragment;
+import com.dk.foi.myeventplanner.fragments.RegisterFragment;
 import com.dk.foi.myeventplanner.fragments.UpcomingEventsFragment;
 import com.dk.foi.myeventplanner.helpers.FragmentStarter;
 import com.dk.foi.myeventplanner.helpers.Util;
@@ -154,6 +156,14 @@ public class MainActivity extends AppCompatActivity implements
             case R.id.nav_other:
                 OtherEventsFragment of = new OtherEventsFragment();
                 FragmentStarter.StartNewFragment(of, this, FragmentLevel.LEVEL_ONE);
+                break;
+            case R.id.nav_reg:
+                RegisterFragment ref = new RegisterFragment();
+                FragmentStarter.StartNewFragment(ref, this, FragmentLevel.LEVEL_ONE);
+                break;
+            case R.id.nav_login:
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
                 break;
             default: break;
         }
