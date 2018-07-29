@@ -34,15 +34,13 @@ public abstract class EventFragmentBase extends Fragment {
     private RecyclerView recyclerView;
     private EventsAdapter mAdapter;
     private EventListSorterService sorterService;
-    private TemplateDataService templateDataService;
 
     @BindView(R.id.fab_event)
     public FloatingActionButton fab;
 
     private EventType eventType;
 
-    protected List<Event> eventList = new ArrayList<>();
-    protected EventDataService dataService;
+    private List<Event> eventList = new ArrayList<>();
 
     public EventFragmentBase(EventType eventType) {
         this.eventType = eventType;
@@ -74,12 +72,10 @@ public abstract class EventFragmentBase extends Fragment {
         super.onStart();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getFragmentTitle());
 
-        dataService = new EventDataService(eventType);
-        templateDataService = new TemplateDataService();
         sorterService = new EventListSorterService();
         recyclerView = getView().findViewById(R.id.main_recycler_2);
 
-        requestData();
+        eventList = requestData();
 
         mAdapter = new EventsAdapter(eventList, getActivity(), eventType);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -90,15 +86,23 @@ public abstract class EventFragmentBase extends Fragment {
         mAdapter.notifyDataSetChanged();
     }
 
-    protected void requestData(){
+    protected List<Event> requestData(){
+        List<Event> events;
+
+        EventDataService dataService = new EventDataService(eventType);
+        TemplateDataService templateDataService = new TemplateDataService();
+
         if(dataService.isEmpty()){
-            eventList = templateDataService.getTemplateData(eventType);
+            events = templateDataService.getTemplateData(eventType);
         }
         else{
-            eventList = dataService.getAll();
+            events = dataService.getAll();
         }
-        eventList = sorterService.attachYears(eventList);
-        eventList = sorterService.sortTheList(eventList);
+
+        events = sorterService.attachYears(events);
+        events = sorterService.sortTheList(events);
+
+        return events;
     }
 
     protected String getFragmentTitle() {

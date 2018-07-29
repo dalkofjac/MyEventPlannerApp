@@ -28,68 +28,20 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PersonalEventsFragment extends Fragment {
-
-    private RecyclerView recyclerView;
-    private EventsAdapter mAdapter;
-    private EventListSorterService sorterService;
-
-    @BindView(R.id.fab_event)
-    public FloatingActionButton fab;
-
-    private EventType eventType = EventType.PERSONAL;
-
-    private List<Event> eventList = new ArrayList<>();
+public class PersonalEventsFragment extends EventFragmentBase {
 
     public PersonalEventsFragment() {
-
+        super(EventType.PERSONAL);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_event,container,false);
-        ButterKnife.bind(this, view);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle args = new Bundle();
-                args.putInt("EVENT_TYPE", eventType.ordinal());
-
-                AddNewEventFragment af = new AddNewEventFragment();
-                af.setArguments(args);
-
-                FragmentStarter.StartNewFragment(af, getActivity(), FragmentLevel.LEVEL_TWO);
-            }
-        });
-
-        return view;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getFragmentTitle());
-
-        sorterService = new EventListSorterService();
-        recyclerView = getView().findViewById(R.id.main_recycler_2);
-
-        requestData();
-
-        mAdapter = new EventsAdapter(eventList, getActivity(), eventType);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
-
-        mAdapter.notifyDataSetChanged();
-    }
-
-    private void requestData(){
-        // TODO
-    }
-
-    private String getFragmentTitle() {
+    protected String getFragmentTitle() {
         return getResources().getString(R.string.personal_events_title);
+    }
+
+    @Override
+    protected List<Event> requestData(){
+        // TODO
+        return new ArrayList<>();
     }
 }

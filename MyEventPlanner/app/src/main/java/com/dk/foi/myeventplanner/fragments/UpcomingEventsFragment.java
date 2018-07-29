@@ -27,8 +27,6 @@ public class UpcomingEventsFragment extends Fragment {
     private List<Event> eventList = new ArrayList<>();
     private RecyclerView recyclerView;
     private UpcomingEventsAdapter mAdapter;
-    private GeneralEventDataService dataService;
-    private TemplateDataService templateDataService;
     private EventListSorterService sorterService;
 
     @Override
@@ -43,12 +41,10 @@ public class UpcomingEventsFragment extends Fragment {
     public void onStart() {
         super.onStart();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getFragmentTitle());
-        dataService = new GeneralEventDataService();
-        templateDataService = new TemplateDataService();
         sorterService = new EventListSorterService();
         recyclerView = getView().findViewById(R.id.main_recycler_2);
 
-        requestData();
+        eventList = requestData();
 
         mAdapter = new UpcomingEventsAdapter(eventList, getActivity());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -59,21 +55,29 @@ public class UpcomingEventsFragment extends Fragment {
         mAdapter.notifyDataSetChanged();
     }
 
-    private void requestData(){
+    private List<Event> requestData(){
+        List<Event> events = new ArrayList<>();
+
+        GeneralEventDataService dataService = new GeneralEventDataService();
+        TemplateDataService templateDataService = new TemplateDataService();
+
         if(dataService.isEmpty()){
-            eventList.addAll(templateDataService.getTemplateData(EventType.HOLIDAY));
-            eventList.addAll(templateDataService.getTemplateData(EventType.BIRTHDAY));
-            eventList.addAll(templateDataService.getTemplateData(EventType.OTHER));
+            events.addAll(templateDataService.getTemplateData(EventType.HOLIDAY));
+            events.addAll(templateDataService.getTemplateData(EventType.BIRTHDAY));
+            events.addAll(templateDataService.getTemplateData(EventType.OTHER));
         }
         else{
-            eventList = dataService.getAll();
+            events = dataService.getAll();
         }
-        eventList = sorterService.attachYears(eventList);
-        eventList = sorterService.sortTheList(eventList);
 
-        while(eventList.size()!=5){
-            eventList.remove(eventList.size()-1);
+        events = sorterService.attachYears(events);
+        events = sorterService.sortTheList(events);
+
+        while(events.size()!=5){
+            events.remove(events.size()-1);
         }
+
+        return events;
     }
 
     private String getFragmentTitle() {

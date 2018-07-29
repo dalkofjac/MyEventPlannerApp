@@ -41,14 +41,12 @@ public abstract class EventDetailsFragmentBase extends Fragment {
     @BindView(R.id.textView_event_left_general)
     TextView textSubTitle;
 
-    private EventDataService dataService;
     private AlertDialog alertDialog;
     private TimerSetterService timerSetter;
 
-    private String eventName;
-    private String eventDate;
-    private Event event;
-
+    private int eventId;
+    private String eventFullDate;
+    private Event currentEvent;
     private EventType eventType;
 
     private String removalQuestion;
@@ -67,8 +65,8 @@ public abstract class EventDetailsFragmentBase extends Fragment {
         ButterKnife.bind(this, view);
         alertDialog = new AlertDialog.Builder(view.getContext()).create();
 
-        eventName = getArguments().getString("EVENT_NAME");
-        eventDate = getArguments().getString("EVENT_DATE");
+        eventId = getArguments().getInt("EVENT_ID");
+        eventFullDate = getArguments().getString("EVENT_DATE");
 
         removalQuestion = view.getContext().getString(R.string.removal_question);
         remove = view.getContext().getString(R.string.remove);
@@ -82,16 +80,15 @@ public abstract class EventDetailsFragmentBase extends Fragment {
     public void onStart() {
         super.onStart();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getFragmentTitle());
-        dataService = new EventDataService(eventType);
         timerSetter = new TimerSetterService();
 
-        event = dataService.getByName(eventName);
+        currentEvent = loadCurrentEvent();
 
-        textName.setText(eventName);
-        textDate.setText(eventDate);
-        textDays.setText(""+ timerSetter.calculateDays(eventDate));
-        timerSetter.setTimer(eventDate, textTimer, eventEndText);
-        textCreated.setText(event.getCreated());
+        textName.setText(currentEvent.getName());
+        textDate.setText(eventFullDate);
+        textDays.setText(""+ timerSetter.calculateDays(eventFullDate));
+        timerSetter.setTimer(eventFullDate, textTimer, eventEndText);
+        textCreated.setText(currentEvent.getCreated());
 
         setFragmentSubtitle();
         textSubTitle.setText(subTitle);
@@ -103,8 +100,7 @@ public abstract class EventDetailsFragmentBase extends Fragment {
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, remove, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Event event = dataService.getByName(eventName);
-                event.delete();
+                deleteCurrentEvent();
                 alertDialog.dismiss();
                 getActivity().onBackPressed();
             }
@@ -117,6 +113,16 @@ public abstract class EventDetailsFragmentBase extends Fragment {
         });
 
         alertDialog.show();
+    }
+
+    protected Event loadCurrentEvent() {
+        EventDataService dataService = new EventDataService(eventType);
+        return dataService.get(eventId);
+    }
+
+    protected void deleteCurrentEvent() {
+        Event event = currentEvent;
+        event.delete();
     }
 
     protected String getFragmentTitle() {
@@ -134,6 +140,8 @@ public abstract class EventDetailsFragmentBase extends Fragment {
             case OTHER:
                 subTitle = getResources().getString(R.string.event_details_subtitle_OTHER);
                 break;
+            case PERSONAL:
+                subTitle = getResources().getString(R.string.event_details_subtitle_PERSONAL);
             default:
                 subTitle = getResources().getString(R.string.event_details_subtitle_OTHER);
                 break;

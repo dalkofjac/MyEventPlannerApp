@@ -29,6 +29,7 @@ public class UpcomingEventsAdapter extends RecyclerView.Adapter<UpcomingEventsVi
     @Override
     public void onBindViewHolder(UpcomingEventsViewHolder holder, int position) {
         Event event = eventList.get(position);
+        holder.id = event.getId();
         holder.name.setText(event.getName());
         holder.date.setText(event.getDate());
     }

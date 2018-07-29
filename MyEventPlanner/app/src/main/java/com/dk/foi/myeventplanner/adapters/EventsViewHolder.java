@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dk.foi.data.enums.EventType;
 import com.dk.foi.myeventplanner.R;
@@ -17,6 +18,8 @@ import com.dk.foi.myeventplanner.fragments.PersonalEventDetailsFragment;
 import com.dk.foi.myeventplanner.helpers.FragmentStarter;
 
 public class EventsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+
+    public int id;
     public TextView name;
     public TextView date;
 
@@ -36,8 +39,8 @@ public class EventsViewHolder extends RecyclerView.ViewHolder implements View.On
     @Override
     public void onClick(View v) {
         Bundle args = new Bundle();
-        args.putString("EVENT_NAME",(String)name.getText());
-        args.putString("EVENT_DATE",(String)date.getText());
+        args.putInt("EVENT_ID", id);
+        args.putString("EVENT_DATE", (String)date.getText());
 
         switch (type) {
             case HOLIDAY:

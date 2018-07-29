@@ -19,6 +19,7 @@ import com.dk.foi.myeventplanner.helpers.FragmentStarter;
 import java.util.List;
 
 public class UpcomingEventsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+    public int id;
     public TextView name;
     public TextView date;
 
@@ -38,10 +39,10 @@ public class UpcomingEventsViewHolder extends RecyclerView.ViewHolder implements
     @Override
     public void onClick(View v) {
         Bundle args = new Bundle();
-        args.putString("EVENT_NAME",(String)name.getText());
+        args.putInt("EVENT_ID", id);
         args.putString("EVENT_DATE",(String)date.getText());
 
-        EventType type = getEventType(eventList, (String)name.getText(), (String)date.getText());
+        EventType type = getEventType(eventList, id);
 
         switch (type) {
             case HOLIDAY:
@@ -69,10 +70,9 @@ public class UpcomingEventsViewHolder extends RecyclerView.ViewHolder implements
         return false;
     }
 
-    private EventType getEventType(List<Event> eventList, String name, String date) {
+    private EventType getEventType(List<Event> eventList, int id) {
         for(int i = 0; i< eventList.size(); i++) {
-            if(eventList.get(i).getName().equals(name)
-                    && eventList.get(i).getDate().equals(date)) {
+            if(eventList.get(i).getId() == id) {
                 return eventList.get(i).getType();
             }
         }
