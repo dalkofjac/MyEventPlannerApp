@@ -21,6 +21,7 @@ import com.dk.foi.myeventplanner.fragments.base.EventFragmentBase;
 import com.dk.foi.myeventplanner.helpers.FragmentStarter;
 import com.dk.foi.myeventplanner.services.EventListSorterService;
 import com.dk.foi.myeventplanner.services.TemplateDataService;
+import com.dk.foi.myeventplanner.webservices.PersonalEventService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,14 @@ public class PersonalEventsFragment extends EventFragmentBase {
 
     @Override
     protected List<Event> requestData(){
-        // TODO
-        return new ArrayList<>();
+        PersonalEventService service = new PersonalEventService();
+        List<Event> events = new ArrayList<>();
+
+        events = service.getAll(getActivity().getIntent().getStringExtra("USER_ID"));
+
+        events = super.sorterService.attachYears(events);
+        events = super.sorterService.sortTheList(events);
+
+        return events;
     }
 }

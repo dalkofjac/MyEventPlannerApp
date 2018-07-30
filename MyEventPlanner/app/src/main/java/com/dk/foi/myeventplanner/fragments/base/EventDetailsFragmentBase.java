@@ -44,7 +44,8 @@ public abstract class EventDetailsFragmentBase extends Fragment {
     private AlertDialog alertDialog;
     private TimerSetterService timerSetter;
 
-    private int eventId;
+    protected int eventId;
+    private String eventName;
     private String eventFullDate;
     private Event currentEvent;
     private EventType eventType;
@@ -66,6 +67,7 @@ public abstract class EventDetailsFragmentBase extends Fragment {
         alertDialog = new AlertDialog.Builder(view.getContext()).create();
 
         eventId = getArguments().getInt("EVENT_ID");
+        eventName = getArguments().getString("EVENT_NAME");
         eventFullDate = getArguments().getString("EVENT_DATE");
 
         removalQuestion = view.getContext().getString(R.string.removal_question);
@@ -84,7 +86,7 @@ public abstract class EventDetailsFragmentBase extends Fragment {
 
         currentEvent = loadCurrentEvent();
 
-        textName.setText(currentEvent.getName());
+        textName.setText(eventName);
         textDate.setText(eventFullDate);
         textDays.setText(""+ timerSetter.calculateDays(eventFullDate));
         timerSetter.setTimer(eventFullDate, textTimer, eventEndText);

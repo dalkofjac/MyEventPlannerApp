@@ -4,6 +4,7 @@ import com.dk.foi.data.entities.Event;
 import com.dk.foi.data.enums.EventType;
 import com.dk.foi.myeventplanner.R;
 import com.dk.foi.myeventplanner.fragments.base.EventDetailsFragmentBase;
+import com.dk.foi.myeventplanner.webservices.PersonalEventService;
 
 public class PersonalEventDetailsFragment extends EventDetailsFragmentBase {
 
@@ -24,7 +25,8 @@ public class PersonalEventDetailsFragment extends EventDetailsFragmentBase {
 
     @Override
     protected void deleteCurrentEvent() {
-        // TODO
+        PersonalEventService eventService = new PersonalEventService();
+        eventService.delete(getActivity().getIntent().getStringExtra("USER_ID"), String.valueOf(eventId));
     }
 
 }

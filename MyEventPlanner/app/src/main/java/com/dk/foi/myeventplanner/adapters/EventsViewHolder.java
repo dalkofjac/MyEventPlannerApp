@@ -40,6 +40,7 @@ public class EventsViewHolder extends RecyclerView.ViewHolder implements View.On
     public void onClick(View v) {
         Bundle args = new Bundle();
         args.putInt("EVENT_ID", id);
+        args.putString("EVENT_NAME", (String)name.getText());
         args.putString("EVENT_DATE", (String)date.getText());
 
         switch (type) {

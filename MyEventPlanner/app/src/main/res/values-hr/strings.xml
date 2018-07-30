@@ -40,7 +40,7 @@
     <string name="about_app_title">O aplikaciji</string>
     <string name="register_title">Registracija</string>
     <string name="personal_events_title">Privatni događaji</string>
-    <string name="personal_event_details_title">Vrijeme do privatnog događaja</string>
+    <string name="personal_event_details_title">Vrijeme do događaja</string>
 
     <!-- Event list item -->
     <string name="event_list_item_date">Datum:</string>

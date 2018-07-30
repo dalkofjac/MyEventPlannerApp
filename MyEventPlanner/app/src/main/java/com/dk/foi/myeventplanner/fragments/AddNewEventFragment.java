@@ -14,6 +14,7 @@ import com.dk.foi.data.enums.EventType;
 import com.dk.foi.data.services.GeneralEventDataService;
 import com.dk.foi.myeventplanner.R;
 import com.dk.foi.myeventplanner.helpers.DateManager;
+import com.dk.foi.myeventplanner.webservices.PersonalEventService;
 
 import java.util.List;
 
@@ -142,6 +143,7 @@ public class AddNewEventFragment extends Fragment {
     }
 
     private void addPersonalEvent(String userId, Event event){
-        // TODO
+        PersonalEventService eventService = new PersonalEventService();
+        eventService.create(userId, event);
     }
 }

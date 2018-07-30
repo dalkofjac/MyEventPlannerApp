@@ -33,7 +33,6 @@ public abstract class EventFragmentBase extends Fragment {
 
     private RecyclerView recyclerView;
     private EventsAdapter mAdapter;
-    private EventListSorterService sorterService;
 
     @BindView(R.id.fab_event)
     public FloatingActionButton fab;
@@ -45,6 +44,8 @@ public abstract class EventFragmentBase extends Fragment {
     public EventFragmentBase(EventType eventType) {
         this.eventType = eventType;
     }
+
+    protected EventListSorterService sorterService;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
