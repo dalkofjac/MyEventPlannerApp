@@ -15,6 +15,9 @@ import okhttp3.Response;
 
 public class UserService {
 
+    private final static String BASE_URL = "http://myeventplannerweb.000webhostapp.com/";
+    private final static String DIRECTORY_PATH = "webservices/";
+
     private MyJsonParser parser;
 
     public UserService() {
@@ -43,7 +46,7 @@ public class UserService {
         return parser.ParseUserInfo(result);
     }
 
-    public void create(User user, String username, String password) {
+    public String create(User user, String username, String password) {
         String result = "";
         UserAdder userAdder = new UserAdder(user, username, password);
         try{
@@ -51,11 +54,14 @@ public class UserService {
         } catch (Exception e){
             e.printStackTrace();
         }
+        return result;
     }
 
     // Inner classes which support service methods
 
     private static class LoginChecker extends AsyncTask<String,Void,String> {
+        final private String SCRIPT_NAME = "check_login.php";
+
         private String username;
         private String password;
 
@@ -77,7 +83,7 @@ public class UserService {
                         .build();
 
                 Request request = new Request.Builder()
-                        .url("http://host/loginCheck.php")
+                        .url(BASE_URL + DIRECTORY_PATH + SCRIPT_NAME)
                         .post(requestBody)
                         .build();
 
@@ -105,6 +111,8 @@ public class UserService {
     }
 
     private static class UserDataGetter extends AsyncTask<String,Void,String> {
+        final private String SCRIPT_NAME = "get_user.php";
+
         private String userId;
         private String result;
 
@@ -122,7 +130,7 @@ public class UserService {
                         .build();
 
                 Request request = new Request.Builder()
-                        .url("http://host/userData.php")
+                        .url(BASE_URL + DIRECTORY_PATH + SCRIPT_NAME)
                         .post(requestBody)
                         .build();
 
@@ -150,6 +158,8 @@ public class UserService {
     }
 
     private static class UserAdder extends AsyncTask<String, Void, String> {
+        final private String SCRIPT_NAME = "add_user.php";
+
         private User user;
         private String username;
         private String password;
@@ -175,7 +185,7 @@ public class UserService {
                         .build();
 
                 Request request = new Request.Builder()
-                        .url("http://host/userRegistration.php")
+                        .url(BASE_URL + DIRECTORY_PATH + SCRIPT_NAME)
                         .post(requestBody)
                         .build();
 

@@ -16,6 +16,9 @@ import okhttp3.Response;
 
 public class PersonalEventService {
 
+    private final static String BASE_URL = "http://myeventplannerweb.000webhostapp.com/";
+    private final static String DIRECTORY_PATH = "webservices/";
+
     private MyJsonParser parser;
 
     public PersonalEventService() {
@@ -55,7 +58,9 @@ public class PersonalEventService {
     // Inner static classes which support service methods
 
     private static class PersonalEventGetter extends AsyncTask<String,Void,String> {
+        final private String SCRIPT_NAME = "event_service.php";
         final private String queryId = "1";
+
         private String userId;
         private String result;
 
@@ -72,7 +77,7 @@ public class PersonalEventService {
                         .build();
 
                 Request request = new Request.Builder()
-                        .url("http://host/eventsQuery.php")
+                        .url(BASE_URL + DIRECTORY_PATH + SCRIPT_NAME)
                         .post(requestBody)
                         .build();
 
@@ -100,9 +105,11 @@ public class PersonalEventService {
     }
 
     private static class PersonalEventAdded extends AsyncTask<String,Void,Void> {
-        final String queryId = "3";
-        String userId;
-        Event chosenEvent = new Event();
+        final private String SCRIPT_NAME = "event_service.php";
+        final private String queryId = "3";
+
+        private String userId;
+        private Event chosenEvent = new Event();
 
         private PersonalEventAdded(String userId, Event event) {
             this.userId = userId;
@@ -126,7 +133,7 @@ public class PersonalEventService {
                         .build();
 
                 Request request = new Request.Builder()
-                        .url("http://host/eventsQuery.php")
+                        .url(BASE_URL + DIRECTORY_PATH + SCRIPT_NAME)
                         .post(requestBody)
                         .build();
 
@@ -152,9 +159,11 @@ public class PersonalEventService {
     }
 
     private static class PersonalEventDelete extends AsyncTask<String,Void,Void> {
+        final private String SCRIPT_NAME = "event_service.php";
         final String queryId = "2";
-        String userId;
-        String eventId;
+
+        private String userId;
+        private String eventId;
 
         private PersonalEventDelete(String userId, String eventId) {
             this.userId = userId;
@@ -172,7 +181,7 @@ public class PersonalEventService {
                         .build();
 
                 Request request = new Request.Builder()
-                        .url("http://host/eventsQuery.php")
+                        .url(BASE_URL + DIRECTORY_PATH + SCRIPT_NAME)
                         .post(requestBody)
                         .build();
 

@@ -30,6 +30,7 @@ import com.dk.foi.myeventplanner.fragments.UpcomingEventsFragment;
 import com.dk.foi.myeventplanner.fragments.UserMainScreenFragment;
 import com.dk.foi.myeventplanner.helpers.FragmentStarter;
 import com.dk.foi.myeventplanner.helpers.Util;
+import com.dk.foi.myeventplanner.webservices.UserService;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
@@ -47,6 +48,7 @@ public class UserActivity extends AppCompatActivity implements
     private Toolbar toolbar;
     private Util util = new Util();
     private User currentUser;
+    private UserService userService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,21 +91,14 @@ public class UserActivity extends AppCompatActivity implements
         ButterKnife.bind(this);
         FlowManager.init(new FlowConfig.Builder(this).build());
 
-        loadUserData();
+        userService = new UserService();
+        currentUser = userService.get(getIntent().getStringExtra("USER_ID"));
+
         loadNavigationHeader();
 
         UserMainScreenFragment msf = new UserMainScreenFragment();
         fragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
         FragmentStarter.StartNewFragment(msf, this, FragmentLevel.INDEX);
-    }
-
-    private void loadUserData(){
-        currentUser = new User();
-        currentUser.setName("Ivan");
-        currentUser.setSurname("RakiTest");
-        currentUser.setEmail("raki@testmail.com");
-
-        // TODO
     }
 
     private void loadNavigationHeader(){

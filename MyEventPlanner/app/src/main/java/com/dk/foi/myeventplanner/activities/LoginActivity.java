@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.dk.foi.myeventplanner.R;
+import com.dk.foi.myeventplanner.webservices.UserService;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,10 +21,12 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.editText_password)
     EditText password;
 
-    private String login_name;
-    private String login_pass;
+    private String loginName;
+    private String loginPass;
     private String loginResponseSuccess;
     private String loginResponseError;
+
+    private UserService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +35,27 @@ public class LoginActivity extends AppCompatActivity {
         loginResponseSuccess = getResources().getString(R.string.login_success);
         loginResponseError = getResources().getString(R.string.login_error);
         ButterKnife.bind(this);
+
+        service = new UserService();
     }
     @OnClick(R.id.button_login)
     public void onLoginButtonClicked(){
-        Intent intent = new Intent(this, UserActivity.class);
-        startActivity(intent);
-        this.finish();
+        String response = "";
+        loginName = username.getText().toString();
+        loginPass = password.getText().toString();
+        response = service.checkLogin(loginName, loginPass);
 
-        // TODO
+        if(response.matches("")) {
+            Toast.makeText(this, loginResponseError, Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(this, loginResponseSuccess, Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(this, UserActivity.class);
+            intent.putExtra("USER_ID", response);
+            startActivity(intent);
+
+            this.finish();
+        }
     }
 }
