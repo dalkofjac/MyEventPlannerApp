@@ -15,8 +15,9 @@ if(strcmp($userData[0], "") == 0){
     $regSurname = $_POST["regSurname"];
     $regEmail = $_POST["regEmail"];
     $regPassword = $_POST["regPassword"];
+    $regCreated = $_POST["regCreated"];
     
-    $sqlQuery2 = "INSERT INTO users (name, surname, email, username, password) VALUES ('$regName','$regSurname','$regEmail','$regUsername','$regPassword')";
+    $sqlQuery2 = "INSERT INTO users (name, surname, email, username, password, created) VALUES ('$regName','$regSurname','$regEmail','$regUsername','$regPassword', '$regCreated')";
     $results2 = $mysqli->query($sqlQuery2);
     echo "pass";
 }

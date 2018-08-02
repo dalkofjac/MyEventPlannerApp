@@ -14,10 +14,10 @@ if($queryId == "1"){
     
     $userId = $_POST["userId"];
     
-    $sqlQuery = "SELECT id, type, name, date FROM events WHERE user = '$userId'";
+    $sqlQuery = "SELECT id, type, name, date, created FROM events WHERE user = '$userId'";
     $results = $mysqli->query($sqlQuery);
     while ($row = mysqli_fetch_array($results)) {
-		array_push($response, array("id"=>$row[0],"type"=>$row[1], "name"=>$row[2],"date"=>$row[3]));
+		array_push($response, array("id"=>$row[0],"type"=>$row[1],"name"=>$row[2],"date"=>$row[3],"created"=>$row[4]));
     }
     
     echo json_encode(array("event"=>$response));
@@ -39,8 +39,9 @@ if($queryId == "1"){
     $eventType = $_POST["eventType"];
     $eventName = $_POST["eventName"];
     $eventDate = $_POST["eventDate"];
+    $eventCreated = $_POST["eventCreated"];
     
-    $sqlQuery = "INSERT INTO events (id, type, name, date, user) VALUES ('$eventId','$eventType','$eventName','$eventDate','$userId')";
+    $sqlQuery = "INSERT INTO events (id, type, name, date, user, created) VALUES ('$eventId','$eventType','$eventName','$eventDate','$userId', '$eventCreated')";
     $results = $mysqli->query($sqlQuery);
     
 } else{
