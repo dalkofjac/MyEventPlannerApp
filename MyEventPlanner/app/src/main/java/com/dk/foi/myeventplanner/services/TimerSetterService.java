@@ -15,6 +15,13 @@ import java.util.concurrent.TimeUnit;
 public class TimerSetterService {
     private static final String FORMAT = "%02d:%02d:%02d";
 
+    /**
+     * Method used to set timer Text Box on details fragment screen
+     * It counts down remaining time (seconds) to certain event
+     * @param eventDate date of event
+     * @param textTimer textView for timer
+     * @param endText text which will be shown when times reaches zero (0)
+     */
     public void setTimer(String eventDate, final TextView textTimer, final String endText){
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.UK);
@@ -47,6 +54,11 @@ public class TimerSetterService {
         }
     }
 
+    /**
+     * Method that calculates exact time remaining to an event based on current date
+     * @param eventDate event data
+     * @return remaining time
+     */
     public long calculateDays(String eventDate){
         long result = 0;
         Date date = DateManager.convertStringToDate(eventDate);

@@ -19,6 +19,9 @@ public class EmailSenderService {
         errorMsg = activity.getString(R.string.email_error_msg);
     }
 
+    /**
+     * Method starts email chooser on user's phone and passes dev's email and subject
+     */
     public void sendEmail() {
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/rfc822");

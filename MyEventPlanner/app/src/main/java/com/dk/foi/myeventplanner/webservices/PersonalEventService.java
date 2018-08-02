@@ -25,6 +25,11 @@ public class PersonalEventService {
         parser = new MyJsonParser();
     }
 
+    /**
+     * Method gets all Personal events from web database, it uses inner class for business logic
+     * @param userId user id associated with events
+     * @return Event List
+     */
     public List<Event> getAll(String userId) {
         String result = "";
         PersonalEventGetter red = new PersonalEventGetter(userId);
@@ -37,6 +42,11 @@ public class PersonalEventService {
         return parser.parseEventsInfo(result);
     }
 
+    /**
+     * Method creates new personal event, it uses inner class for business logic
+     * @param userId user id associated with event
+     * @param event Event object
+     */
     public void create(String userId, Event event) {
         PersonalEventAdded eventAdder = new PersonalEventAdded(userId, event);
         try{
@@ -46,6 +56,11 @@ public class PersonalEventService {
         }
     }
 
+    /**
+     * Method deletes personal event, it uses inner class for business logic
+     * @param userId user id associated with event
+     * @param eventId Event's id
+     */
     public void delete(String userId, String eventId) {
         PersonalEventDelete eventDeleter = new PersonalEventDelete(userId, eventId);
         try{

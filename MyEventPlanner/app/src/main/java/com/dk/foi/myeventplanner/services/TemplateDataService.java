@@ -10,6 +10,12 @@ public class TemplateDataService {
 
     public TemplateDataService() { }
 
+    /**
+     * Method which returns Event List with template data for certain event type
+     * Also, it saves newly created events to local database
+     * @param type type of event that data has to represent
+     * @return exit Event List with template data
+     */
     public ArrayList<Event> getTemplateData(EventType type) {
         ArrayList<Event> eventList = generateTemplateData(type);
 
@@ -21,6 +27,11 @@ public class TemplateDataService {
         return eventList;
     }
 
+    /**
+     * Method generates template event data
+     * @param type type of event that data has to represent
+     * @return exit Event List with template data
+     */
     public ArrayList<Event> generateTemplateData(EventType type) {
         ArrayList<Event> eventList = new ArrayList<>();
         Event event;

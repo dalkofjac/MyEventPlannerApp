@@ -1,5 +1,8 @@
 package com.dk.foi.data.enums;
 
+/**
+ * Enum for establishing which event type is certain event
+ */
 public enum EventType {
     HOLIDAY,
     BIRTHDAY,

@@ -15,6 +15,11 @@ public class MyJsonParser {
 
     public MyJsonParser() { }
 
+    /**
+     * Parses json data of one user into User entity object
+     * @param jsonString user data json
+     * @return user entity model
+     */
     public User parseUserInfo(String jsonString){
         User currentUser = new User();
         try {
@@ -31,6 +36,12 @@ public class MyJsonParser {
         }
         return currentUser;
     }
+
+    /**
+     * Parses json data of multiple events info Event List object
+     * @param jsonString events data json
+     * @return Event List
+     */
     public List<Event> parseEventsInfo(String jsonString){
         List<Event> eventsList = new ArrayList<>();
         try {

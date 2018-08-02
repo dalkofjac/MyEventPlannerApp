@@ -11,6 +11,10 @@ public class Util {
 
     public Util() { }
 
+    /**
+     * Sets application language; default language is english
+     * @param context application context
+     */
     public void setLanguage(Context context){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         String lang = preferences.getString("pref_lang", "en");

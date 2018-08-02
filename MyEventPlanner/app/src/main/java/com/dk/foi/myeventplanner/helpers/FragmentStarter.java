@@ -10,7 +10,7 @@ import com.dk.foi.myeventplanner.enums.FragmentLevel;
 
 public class FragmentStarter {
     /**
-     * Class for simple start of fragments.
+     * Class for simple start of the fragments.
      *
      * @param fragment targeted fragment
      * @param activity current activity

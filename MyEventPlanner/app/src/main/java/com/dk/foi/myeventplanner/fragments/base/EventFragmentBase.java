@@ -28,6 +28,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * Base class for all Event Fragments
+ */
 public abstract class EventFragmentBase extends Fragment {
     private final String defaultFragmentTitle = "Events";
 

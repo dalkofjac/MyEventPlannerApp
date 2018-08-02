@@ -13,6 +13,11 @@ public class EventListSorterService {
     public EventListSorterService(){
     }
 
+    /**
+     * Method sorts the Event List based on event date
+     * @param eventList entry Event List (unsorted)
+     * @return exit Event List (sorted)
+     */
     public List<Event> sortTheList(List<Event> eventList){
         Event eventHigh;
         Event eventLow;
@@ -30,6 +35,12 @@ public class EventListSorterService {
         return eventList;
     }
 
+    /**
+     * Method attaches year value on each member of Event List
+     * It is using current date to establish which year it should attach
+     * @param targetedEventList entry Event List (events without year value)
+     * @return exit Event List (events with year value)
+     */
     public List<Event> attachYears(List<Event> targetedEventList){
         Calendar cal=Calendar.getInstance();
         int currentYear = cal.get(Calendar.YEAR);

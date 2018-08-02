@@ -96,6 +96,7 @@ public class RegisterFragment extends Fragment {
             Toast.makeText(this.getActivity().getApplicationContext(),regError,Toast.LENGTH_LONG).show();
         }
     }
+
     private boolean inputCheck(){
         if(regName.getText().length()< 2
                 || regSurname.getText().length()< 2

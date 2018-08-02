@@ -4,6 +4,9 @@ import com.dk.foi.data.entities.Event;
 
 import java.util.List;
 
+/**
+ * Interface for standard event service (for local db operations)
+ */
 public interface DataServiceInterface {
     List<Event> getAll();
     Event get(int id);

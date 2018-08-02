@@ -24,6 +24,12 @@ public class UserService {
         parser = new MyJsonParser();
     }
 
+    /**
+     * Method checks user's login credentials, it uses inner class for business logic
+     * @param username user's username
+     * @param password user's password
+     * @return user's id if user is found, empty string if isn't or error msg if there was a db error
+     */
     public String checkLogin(String username, String password) {
         String response = "";
         LoginChecker loginChecker = new LoginChecker(username, password);
@@ -35,6 +41,11 @@ public class UserService {
         return response;
     }
 
+    /**
+     * Method gets one user's data, it uses inner class for business logic
+     * @param userId user's id
+     * @return User object
+     */
     public User get(String userId) {
         String result = "";
         UserDataGetter receiveUserData = new UserDataGetter(userId);
@@ -46,6 +57,13 @@ public class UserService {
         return parser.parseUserInfo(result);
     }
 
+    /**
+     * Method creates new user (registration), it uses inner class for business logic
+     * @param user User entity data
+     * @param username user's username
+     * @param password user's password
+     * @return string 'pass' if user is created or string 'stop' if isn't
+     */
     public String create(User user, String username, String password) {
         String result = "";
         UserAdder userAdder = new UserAdder(user, username, password);

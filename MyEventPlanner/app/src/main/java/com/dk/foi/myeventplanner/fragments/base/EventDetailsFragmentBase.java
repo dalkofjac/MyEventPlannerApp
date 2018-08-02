@@ -19,6 +19,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * Base class for all Event Details Fragments
+ */
 public abstract class EventDetailsFragmentBase extends Fragment {
     private final String defaultFragmentTitle = "Time until event";
 
