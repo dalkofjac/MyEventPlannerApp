@@ -16,6 +16,8 @@
     <string name="nav_drawer_user_options">User options</string>
     <string name="nav_drawer_login">Login</string>
     <string name="nav_drawer_registration">Register</string>
+    <string name="nav_drawer_logout">Logout</string>
+    <string name="nav_drawer_personal">Personal events</string>
 
     <!-- Navigation menu -->
     <string name="action_settings">Settings</string>
@@ -35,6 +37,9 @@
     <string name="other_event_details_title">Time until event</string>
     <string name="about_app_title">About application</string>
     <string name="register_title">Registration</string>
+    <string name="personal_events_title">Personal events</string>
+    <string name="add_personal_event_title">Add new personal event</string>
+    <string name="personal_event_details_title">Time until personal event</string>
 
     <!-- Event list item -->
     <string name="event_list_item_date">Date:</string>
@@ -49,12 +54,14 @@
     <string name="event_details_subtitle_HOLIDAY">is coming in</string>
     <string name="event_details_subtitle_BIRTHDAY">is celebrating birthday in</string>
     <string name="event_details_subtitle_OTHER">is happening in</string>
+    <string name="event_details_subtitle_PERSONAL">is expected to happen in</string>
 
     <!-- Main screen fragment -->
     <string name="main_screen_upcoming">Upcoming</string>
     <string name="main_screen_holidays">Holidays</string>
     <string name="main_screen_birthday">Birthdays</string>
     <string name="main_screen_other">Other</string>
+    <string name="main_screen_personal">Personal</string>
 
     <!-- Add new event fragment -->
     <string name="add_event_date">Date (ex. 23/08)</string>
@@ -111,12 +118,5 @@
 
     <!-- Other -->
     <string name="image_default_desc">Image</string>
-    <string name="nav_drawer_logout">Logout</string>
-    <string name="main_screen_personal">Personal</string>
-    <string name="nav_drawer_personal">Personal events</string>
-    <string name="personal_events_title">Personal events</string>
-    <string name="add_personal_event_title">Add new personal event</string>
-    <string name="personal_event_details_title">Time until personal event</string>
-    <string name="event_details_subtitle_PERSONAL">is expected to happen in</string>
 
 </resources>

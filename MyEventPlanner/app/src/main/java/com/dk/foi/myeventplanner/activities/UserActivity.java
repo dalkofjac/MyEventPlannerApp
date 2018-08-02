@@ -25,7 +25,6 @@ import com.dk.foi.myeventplanner.fragments.HolidaysFragment;
 import com.dk.foi.myeventplanner.fragments.MainScreenFragment;
 import com.dk.foi.myeventplanner.fragments.OtherEventsFragment;
 import com.dk.foi.myeventplanner.fragments.PersonalEventsFragment;
-import com.dk.foi.myeventplanner.fragments.RegisterFragment;
 import com.dk.foi.myeventplanner.fragments.UpcomingEventsFragment;
 import com.dk.foi.myeventplanner.fragments.UserMainScreenFragment;
 import com.dk.foi.myeventplanner.helpers.FragmentStarter;

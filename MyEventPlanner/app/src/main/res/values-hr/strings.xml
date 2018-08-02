@@ -102,7 +102,7 @@
     <string name="register_name">Ime</string>
     <string name="register_surname">Prezime</string>
     <string name="register_email">Email adresa</string>
-    <string name="register_username">Korisniko ime</string>
+    <string name="register_username">Korisničko ime</string>
     <string name="reg_password">Lozinka</string>
     <string name="register_button">Registriraj me</string>
     <string name="register_success">Uspješna registracija!</string>

@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.dk.foi.data.entities.Event;
 import com.dk.foi.data.enums.EventType;
-import com.dk.foi.data.services.EventDataService;
 import com.dk.foi.myeventplanner.R;
 import com.dk.foi.myeventplanner.services.TimerSetterService;
 
