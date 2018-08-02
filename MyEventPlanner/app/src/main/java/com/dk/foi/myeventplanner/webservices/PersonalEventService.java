@@ -121,6 +121,7 @@ public class PersonalEventService {
             String eventType = String.valueOf(chosenEvent.getType());
             String eventName = chosenEvent.getName();
             String eventDate = chosenEvent.getDate();
+            String eventCreated = chosenEvent.getCreated();
             try {
                 OkHttpClient client = new OkHttpClient();
                 RequestBody requestBody = new FormBody.Builder()
@@ -130,6 +131,7 @@ public class PersonalEventService {
                         .add("eventType", eventType)
                         .add("eventName", eventName)
                         .add("eventDate", eventDate)
+                        .add("eventCreated", eventCreated)
                         .build();
 
                 Request request = new Request.Builder()

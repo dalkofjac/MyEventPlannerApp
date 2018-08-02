@@ -182,6 +182,7 @@ public class UserService {
                         .add("regEmail", user.getEmail())
                         .add("regUsername", username)
                         .add("regPassword", password)
+                        .add("regCreated", user.getCreated())
                         .build();
 
                 Request request = new Request.Builder()

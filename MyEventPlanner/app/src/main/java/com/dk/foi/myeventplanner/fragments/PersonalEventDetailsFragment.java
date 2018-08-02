@@ -18,15 +18,10 @@ public class PersonalEventDetailsFragment extends EventDetailsFragmentBase {
     }
 
     @Override
-    protected Event loadCurrentEvent() {
-        // TODO
-        return new Event();
-    }
-
-    @Override
     protected void deleteCurrentEvent() {
         PersonalEventService eventService = new PersonalEventService();
-        eventService.delete(getActivity().getIntent().getStringExtra("USER_ID"), String.valueOf(eventId));
+        eventService.delete(getActivity().getIntent().getStringExtra("USER_ID"),
+                String.valueOf(currentEvent.getId()));
     }
 
 }

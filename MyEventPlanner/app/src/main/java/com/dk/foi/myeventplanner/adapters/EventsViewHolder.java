@@ -22,6 +22,7 @@ public class EventsViewHolder extends RecyclerView.ViewHolder implements View.On
     public int id;
     public TextView name;
     public TextView date;
+    public String created;
 
     private Context context;
     private EventType type;
@@ -42,6 +43,7 @@ public class EventsViewHolder extends RecyclerView.ViewHolder implements View.On
         args.putInt("EVENT_ID", id);
         args.putString("EVENT_NAME", (String)name.getText());
         args.putString("EVENT_DATE", (String)date.getText());
+        args.putString("EVENT_CREATED", created);
 
         switch (type) {
             case HOLIDAY:

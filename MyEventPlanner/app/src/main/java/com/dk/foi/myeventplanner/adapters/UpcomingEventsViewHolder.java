@@ -22,6 +22,7 @@ public class UpcomingEventsViewHolder extends RecyclerView.ViewHolder implements
     public int id;
     public TextView name;
     public TextView date;
+    public String created;
 
     private Context context;
     private List<Event> eventList;
@@ -40,7 +41,9 @@ public class UpcomingEventsViewHolder extends RecyclerView.ViewHolder implements
     public void onClick(View v) {
         Bundle args = new Bundle();
         args.putInt("EVENT_ID", id);
-        args.putString("EVENT_DATE",(String)date.getText());
+        args.putString("EVENT_NAME", (String)name.getText());
+        args.putString("EVENT_DATE", (String)date.getText());
+        args.putString("EVENT_CREATED", created);
 
         EventType type = getEventType(eventList, id);
 

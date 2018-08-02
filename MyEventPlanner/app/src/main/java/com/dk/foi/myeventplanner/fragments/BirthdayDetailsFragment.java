@@ -17,11 +17,6 @@ public class BirthdayDetailsFragment extends EventDetailsFragmentBase {
     }
 
     @Override
-    protected Event loadCurrentEvent() {
-        return super.loadCurrentEvent();
-    }
-
-    @Override
     protected void deleteCurrentEvent() {
         super.deleteCurrentEvent();
     }

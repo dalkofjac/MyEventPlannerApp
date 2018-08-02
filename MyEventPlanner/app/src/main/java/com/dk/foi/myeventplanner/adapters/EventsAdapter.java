@@ -35,6 +35,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsViewHolder> {
         holder.id = event.getId();
         holder.name.setText(event.getName());
         holder.date.setText(event.getDate());
+        holder.created = event.getCreated();
     }
 
     @Override

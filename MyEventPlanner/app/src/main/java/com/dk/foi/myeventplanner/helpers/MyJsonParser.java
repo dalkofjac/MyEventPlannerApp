@@ -25,6 +25,7 @@ public class MyJsonParser {
             currentUser.setName(JO.getString("name"));
             currentUser.setSurname(JO.getString("surname"));
             currentUser.setEmail(JO.getString("email"));
+            currentUser.setCreated(JO.getString("created"));
         }catch(JSONException jse){
             jse.printStackTrace();
         }
@@ -42,6 +43,7 @@ public class MyJsonParser {
                 currentEvent.setType(EventType.fromInteger(Integer.parseInt(JO.getString("type"))));
                 currentEvent.setName(JO.getString("name"));
                 currentEvent.setDate(JO.getString("date"));
+                currentEvent.setCreated(JO.getString("created"));
                 eventsList.add(currentEvent);
             }
         }catch(JSONException jse){

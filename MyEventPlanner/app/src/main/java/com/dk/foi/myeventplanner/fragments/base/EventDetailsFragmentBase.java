@@ -44,10 +44,6 @@ public abstract class EventDetailsFragmentBase extends Fragment {
     private AlertDialog alertDialog;
     private TimerSetterService timerSetter;
 
-    protected int eventId;
-    private String eventName;
-    private String eventFullDate;
-    private Event currentEvent;
     private EventType eventType;
 
     private String removalQuestion;
@@ -55,6 +51,8 @@ public abstract class EventDetailsFragmentBase extends Fragment {
     private String cancel;
     private String eventEndText;
     private String subTitle;
+
+    protected Event currentEvent;
 
     public EventDetailsFragmentBase(EventType eventType) {
         this.eventType = eventType;
@@ -65,10 +63,6 @@ public abstract class EventDetailsFragmentBase extends Fragment {
         View view = inflater.inflate(R.layout.fragment_event_details,container,false);
         ButterKnife.bind(this, view);
         alertDialog = new AlertDialog.Builder(view.getContext()).create();
-
-        eventId = getArguments().getInt("EVENT_ID");
-        eventName = getArguments().getString("EVENT_NAME");
-        eventFullDate = getArguments().getString("EVENT_DATE");
 
         removalQuestion = view.getContext().getString(R.string.removal_question);
         remove = view.getContext().getString(R.string.remove);
@@ -86,10 +80,10 @@ public abstract class EventDetailsFragmentBase extends Fragment {
 
         currentEvent = loadCurrentEvent();
 
-        textName.setText(eventName);
-        textDate.setText(eventFullDate);
-        textDays.setText(""+ timerSetter.calculateDays(eventFullDate));
-        timerSetter.setTimer(eventFullDate, textTimer, eventEndText);
+        textName.setText(currentEvent.getName());
+        textDate.setText(currentEvent.getDate());
+        textDays.setText(""+ timerSetter.calculateDays(currentEvent.getDate()));
+        timerSetter.setTimer(currentEvent.getDate(), textTimer, eventEndText);
         textCreated.setText(currentEvent.getCreated());
 
         setFragmentSubtitle();
@@ -117,11 +111,6 @@ public abstract class EventDetailsFragmentBase extends Fragment {
         alertDialog.show();
     }
 
-    protected Event loadCurrentEvent() {
-        EventDataService dataService = new EventDataService(eventType);
-        return dataService.get(eventId);
-    }
-
     protected void deleteCurrentEvent() {
         Event event = currentEvent;
         event.delete();
@@ -129,6 +118,15 @@ public abstract class EventDetailsFragmentBase extends Fragment {
 
     protected String getFragmentTitle() {
         return defaultFragmentTitle;
+    }
+
+    private Event loadCurrentEvent() {
+        Event event = new Event();
+        event.setId(getArguments().getInt("EVENT_ID"));
+        event.setName(getArguments().getString("EVENT_NAME"));
+        event.setDate(getArguments().getString("EVENT_DATE"));
+        event.setCreated(getArguments().getString("EVENT_CREATED"));
+        return event;
     }
 
     private void setFragmentSubtitle() {

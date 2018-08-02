@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.dk.foi.data.entities.User;
 import com.dk.foi.myeventplanner.R;
+import com.dk.foi.myeventplanner.helpers.DateManager;
 import com.dk.foi.myeventplanner.webservices.UserService;
 
 import butterknife.BindView;
@@ -71,6 +72,7 @@ public class RegisterFragment extends Fragment {
             user.setName(regName.getText().toString());
             user.setSurname(regSurname.getText().toString());
             user.setEmail(regEmail.getText().toString());
+            user.setCreated(DateManager.getTodayDate());
 
             response = userService.create(user, regUsername.getText().toString(), regPassword.getText().toString());
 

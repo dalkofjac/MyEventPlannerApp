@@ -32,6 +32,7 @@ public class UpcomingEventsAdapter extends RecyclerView.Adapter<UpcomingEventsVi
         holder.id = event.getId();
         holder.name.setText(event.getName());
         holder.date.setText(event.getDate());
+        holder.created = event.getCreated();
     }
 
     @Override
