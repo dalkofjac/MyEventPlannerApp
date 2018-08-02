@@ -41,21 +41,34 @@ public class LoginActivity extends AppCompatActivity {
     @OnClick(R.id.button_login)
     public void onLoginButtonClicked(){
         String response = "";
+        boolean isValidResponse = false;
         loginName = username.getText().toString();
         loginPass = password.getText().toString();
-        response = service.checkLogin(loginName, loginPass);
 
-        if(response.matches("")) {
+        if(loginName.isEmpty() || loginPass.isEmpty()) {
             Toast.makeText(this, loginResponseError, Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(this, loginResponseSuccess, Toast.LENGTH_SHORT).show();
+        } else {
+            response = service.checkLogin(loginName, loginPass);
 
-            Intent intent = new Intent(this, UserActivity.class);
-            intent.putExtra("USER_ID", response);
-            startActivity(intent);
+            try {
+                int num = Integer.parseInt(response);
+                isValidResponse = true;
+            } catch (NumberFormatException e) {
+                isValidResponse = false;
+            }
 
-            this.finish();
+            if(!isValidResponse) {
+                Toast.makeText(this, loginResponseError, Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(this, loginResponseSuccess, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(this, UserActivity.class);
+                intent.putExtra("USER_ID", response);
+                startActivity(intent);
+
+                this.finish();
+            }
         }
     }
 }

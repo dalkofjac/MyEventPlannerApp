@@ -39,12 +39,12 @@ public class EventListSorterServiceTest {
         List<Event> sortedEventList;
         sortedEventList = service.sortTheList(eventList);
 
-        assertNotNull("Event list sorter returns null object.", sortedEventList);
+        assertNotNull("Event list sorter returns null object", sortedEventList);
 
         actualNumberOfEvents = eventList.size();
         expectedNumberOfEvents = sortedEventList.size();
 
-        assertEquals("Event list sorter returned wrong number of list objects.", actualNumberOfEvents, expectedNumberOfEvents);
+        assertEquals("Event list sorter returned wrong number of list objects", actualNumberOfEvents, expectedNumberOfEvents);
     }
 
     @Test
@@ -59,11 +59,11 @@ public class EventListSorterServiceTest {
         List<Event> retrievedEventList;
         retrievedEventList = service.attachYears(eventList);
 
-        assertNotNull("Attaching years onto a event list returned null object.", retrievedEventList);
+        assertNotNull("Attaching years onto a event list returned null object", retrievedEventList);
 
         actualNumberOfEvents = eventList.size();
         expectedNumberOfEvents = retrievedEventList.size();
 
-        assertEquals("Event list sorter returned wrong number of list objects.", expectedNumberOfEvents, actualNumberOfEvents);
+        assertEquals("Event list sorter returned wrong number of list objects", expectedNumberOfEvents, actualNumberOfEvents);
     }
 }

@@ -34,7 +34,7 @@ public class PersonalEventService {
             e.printStackTrace();
         }
 
-        return parser.ParseEventsInfo(result);
+        return parser.parseEventsInfo(result);
     }
 
     public void create(String userId, Event event) {

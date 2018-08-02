@@ -43,7 +43,7 @@ public class UserService {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return parser.ParseUserInfo(result);
+        return parser.parseUserInfo(result);
     }
 
     public String create(User user, String username, String password) {

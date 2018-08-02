@@ -15,7 +15,7 @@ public class MyJsonParser {
 
     public MyJsonParser() { }
 
-    public User ParseUserInfo(String jsonString){
+    public User parseUserInfo(String jsonString){
         User currentUser = new User();
         try {
             JSONObject jsonObject = new JSONObject(jsonString);
@@ -31,7 +31,7 @@ public class MyJsonParser {
         }
         return currentUser;
     }
-    public List<Event> ParseEventsInfo(String jsonString){
+    public List<Event> parseEventsInfo(String jsonString){
         List<Event> eventsList = new ArrayList<>();
         try {
             JSONObject jsonObject = new JSONObject(jsonString);
