@@ -38,4 +38,18 @@ public class DateManager {
         tDate = tDate + "/" + currentYear;
         return tDate;
     }
+
+    public static boolean isValidDate(String input) {
+        String formatString = "dd/MM/yyyy";
+
+        try {
+            SimpleDateFormat format = new SimpleDateFormat(formatString);
+            format.setLenient(false);
+            format.parse(input);
+        } catch (ParseException e) {
+            return false;
+        }
+
+        return true;
+    }
 }

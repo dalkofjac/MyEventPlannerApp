@@ -16,6 +16,7 @@ import com.dk.foi.myeventplanner.R;
 import com.dk.foi.myeventplanner.helpers.DateManager;
 import com.dk.foi.myeventplanner.webservices.PersonalEventService;
 
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -114,20 +115,20 @@ public class AddNewEventFragment extends Fragment {
     }
 
     private boolean dateCheck(String date){
-        String days = "";
-        String months = "";
-        days = date.substring(0, date.indexOf("/"));
-        months = date.substring(date.indexOf("/")+1);
-
-        if(date.length() > 5){
-            Toast.makeText(getActivity(), badFormat, Toast.LENGTH_LONG).show();
-            return false;
+        // Specific check for 29/02 (happening only every 4 years)
+        if(date.matches("29/02") || date.matches("29/2")) {
+            return true;
         }
 
-        if(Integer.parseInt(days)>31 || Integer.parseInt(months)>12){
+        Calendar cal = Calendar.getInstance();
+        int currentYear = cal.get(Calendar.YEAR);
+        date = date + "/" + String.valueOf(currentYear);
+
+        if(!DateManager.isValidDate(date)){
             Toast.makeText(getActivity(), unDate, Toast.LENGTH_LONG).show();
             return false;
         }
+
         return true;
     }
 
