@@ -55,6 +55,10 @@ public class MainActivity extends AppCompatActivity implements
         fragmentManager = getFragmentManager();
         fragmentManager.addOnBackStackChangedListener(this);
 
+        util.setLanguage(this);
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .registerOnSharedPreferenceChangeListener(this);
+
         drawer = findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.nav_drawer_open, R.string.nav_drawer_close);
@@ -63,10 +67,6 @@ public class MainActivity extends AppCompatActivity implements
 
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        util.setLanguage(this);
-        PreferenceManager.getDefaultSharedPreferences(this)
-                .registerOnSharedPreferenceChangeListener(this);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

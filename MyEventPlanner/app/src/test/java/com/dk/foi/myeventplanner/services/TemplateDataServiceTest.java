@@ -14,15 +14,6 @@ public class TemplateDataServiceTest {
 
     private TemplateDataService templateDataService;
 
-    private ArrayList<Event> eventList;
-    private EventType eventType;
-
-    private int actualNumberOfEvents = 0;
-    private int expectedNumberOfEvents = 0;
-
-    private EventType actualEventType;
-    private EventType expectedEventType;
-
     @Before
     public void setUp() {
         templateDataService = new TemplateDataService();
@@ -30,49 +21,19 @@ public class TemplateDataServiceTest {
 
     @Test
     public void generateTemplateData() throws Exception {
-        eventList = new ArrayList<>();
-        eventType = EventType.HOLIDAY;
+        ArrayList<Event> eventList = new ArrayList<>();
+        int actualNumberOfEvents = 0;
+        int expectedNumberOfEvents = 0;
 
-        eventList = templateDataService.generateTemplateData(eventType);
+        eventList = templateDataService.generateTemplateData();
+
+        assertNotNull("TemplateDataService returns null object", eventList);
 
         actualNumberOfEvents = eventList.size();
-        expectedNumberOfEvents = 5;
+        expectedNumberOfEvents = 9;
         assertEquals("TemplateDataService returns unexpected number of events",
                 expectedNumberOfEvents, actualNumberOfEvents);
 
-        actualEventType = eventList.get(0).getType();
-        expectedEventType = eventType;
-        assertTrue("TemplateDataService returns unexpected type of events",
-                actualEventType == expectedEventType);
 
-        eventList = new ArrayList<>();
-        eventType = EventType.BIRTHDAY;
-
-        eventList = templateDataService.generateTemplateData(eventType);
-
-        actualNumberOfEvents = eventList.size();
-        expectedNumberOfEvents = 2;
-        assertEquals("TemplateDataService returns unexpected number of events",
-                expectedNumberOfEvents, actualNumberOfEvents);
-
-        actualEventType = eventList.get(0).getType();
-        expectedEventType = eventType;
-        assertTrue("TemplateDataService returns unexpected type of events",
-                actualEventType == expectedEventType);
-
-        eventList = new ArrayList<>();
-        eventType = EventType.OTHER;
-
-        eventList = templateDataService.generateTemplateData(eventType);
-
-        actualNumberOfEvents = eventList.size();
-        expectedNumberOfEvents = 2;
-        assertEquals("TemplateDataService returns unexpected number of events",
-                expectedNumberOfEvents, actualNumberOfEvents);
-
-        actualEventType = eventList.get(0).getType();
-        expectedEventType = eventType;
-        assertTrue("TemplateDataService returns unexpected type of events",
-                actualEventType == expectedEventType);
     }
 }

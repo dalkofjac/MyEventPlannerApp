@@ -32,7 +32,8 @@
                 android:cropToPadding="false"
                 android:elevation="24dp"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/logo_icon_hi_res" />
+                app:srcCompat="@mipmap/logo_icon_hi_res"
+                android:contentDescription="@string/image_default_desc"/>
 
         </LinearLayout>
 

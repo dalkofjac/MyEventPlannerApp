@@ -56,19 +56,17 @@ public class UpcomingEventsFragment extends Fragment {
     }
 
     private List<Event> requestData(){
-        List<Event> events = new ArrayList<>();
+        List<Event> events;
 
-        GeneralEventDataService dataService = new GeneralEventDataService();
+        GeneralEventDataService generalDataService = new GeneralEventDataService();
         TemplateDataService templateDataService = new TemplateDataService();
 
-        if(dataService.isEmpty()){
-            events.addAll(templateDataService.getTemplateData(EventType.HOLIDAY));
-            events.addAll(templateDataService.getTemplateData(EventType.BIRTHDAY));
-            events.addAll(templateDataService.getTemplateData(EventType.OTHER));
+        // if local db is empty then load template data
+        if(generalDataService.isEmpty()) {
+            templateDataService.loadTemplateData();
         }
-        else{
-            events = dataService.getAll();
-        }
+
+        events = generalDataService.getAll();
 
         events = sorterService.attachYears(events);
         events = sorterService.sortTheList(events);

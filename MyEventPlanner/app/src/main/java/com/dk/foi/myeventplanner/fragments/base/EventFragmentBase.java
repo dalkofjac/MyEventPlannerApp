@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.dk.foi.data.entities.Event;
 import com.dk.foi.data.enums.EventType;
 import com.dk.foi.data.services.EventDataService;
+import com.dk.foi.data.services.GeneralEventDataService;
 import com.dk.foi.myeventplanner.R;
 import com.dk.foi.myeventplanner.adapters.EventsAdapter;
 import com.dk.foi.myeventplanner.enums.FragmentLevel;
@@ -93,15 +94,16 @@ public abstract class EventFragmentBase extends Fragment {
     protected List<Event> requestData(){
         List<Event> events;
 
+        GeneralEventDataService generalDataService = new GeneralEventDataService();
         EventDataService dataService = new EventDataService(eventType);
         TemplateDataService templateDataService = new TemplateDataService();
 
-        if(dataService.isEmpty()){
-            events = templateDataService.getTemplateData(eventType);
+        // if local db is empty then load template data
+        if(generalDataService.isEmpty()) {
+            templateDataService.loadTemplateData();
         }
-        else{
-            events = dataService.getAll();
-        }
+
+        events = dataService.getAll();
 
         events = sorterService.attachYears(events);
         events = sorterService.sortTheList(events);
