@@ -50,6 +50,6 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 USER root
 RUN chown -R jenkins:jenkins ${ANDROID_HOME}
 USER jenkins
-RUN /usr/local/bin/install-plugins.sh git gradle android-emulator monitoring google-play-android-publisher android-signing copyartifact ftppublisher
+RUN /usr/local/bin/install-plugins.sh git gradle android-emulator monitoring google-play-android-publisher android-signing copyartifact publish-over-ftp
 
 ENV ANDROID_EMULATOR_FORCE_32BIT true
