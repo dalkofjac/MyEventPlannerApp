@@ -1,0 +1,48 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Continuous deployment job for Android app MyEventPlanner which should run after CI job on master branch is finished.</description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <jenkins.triggers.ReverseBuildTrigger>
+      <spec></spec>
+      <upstreamProjects>Android CI - MyEventPlanner - master, </upstreamProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </jenkins.triggers.ReverseBuildTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.41">
+      <project>Android CI - MyEventPlanner - master</project>
+      <filter>**/*.apk</filter>
+      <target></target>
+      <excludes></excludes>
+      <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
+        <stable>true</stable>
+      </selector>
+      <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>
+    </hudson.plugins.copyartifact.CopyArtifact>
+  </builders>
+  <publishers>
+    <org.jenkinsci.plugins.googleplayandroidpublisher.ApkPublisher plugin="google-play-android-publisher@1.5">
+      <googleCredentialsId>api</googleCredentialsId>
+      <apkFilesPattern>**/*.apk</apkFilesPattern>
+      <expansionFilesPattern></expansionFilesPattern>
+      <usePreviousExpansionFilesIfMissing>false</usePreviousExpansionFilesIfMissing>
+      <trackName>production</trackName>
+      <rolloutPercentage></rolloutPercentage>
+    </org.jenkinsci.plugins.googleplayandroidpublisher.ApkPublisher>
+  </publishers>
+  <buildWrappers/>
+</project>
