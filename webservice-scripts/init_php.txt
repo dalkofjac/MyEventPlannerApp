@@ -1,3 +1,5 @@
+// For regular use of each php script, 'init.php' should be created in current folder with following structure:
+
 <?php
  $db_name = "***protected***";
  $mysql_user = "***protected***";
