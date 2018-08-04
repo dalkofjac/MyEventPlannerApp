@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.dk.foi.data.entities.User;
+import com.dk.foi.myeventplanner.MainActivity;
 import com.dk.foi.myeventplanner.R;
 import com.dk.foi.myeventplanner.enums.FragmentLevel;
 import com.dk.foi.myeventplanner.fragments.AboutAppFragment;
@@ -69,10 +70,6 @@ public class UserActivity extends AppCompatActivity implements
         navigationView = findViewById(R.id.nav_view_user);
         navigationView.setNavigationItemSelectedListener(this);
 
-        util.setLanguage(this);
-        PreferenceManager.getDefaultSharedPreferences(this)
-                .registerOnSharedPreferenceChangeListener(this);
-
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +86,13 @@ public class UserActivity extends AppCompatActivity implements
 
         ButterKnife.bind(this);
         FlowManager.init(new FlowConfig.Builder(this).build());
+
+        util.setLanguage(this);
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .registerOnSharedPreferenceChangeListener(this);
+
+        navigationView.getMenu().clear();
+        navigationView.inflateMenu(R.menu.activity_user_drawer);
 
         userService = new UserService();
         currentUser = userService.get(getIntent().getStringExtra("USER_ID"));
@@ -181,6 +185,8 @@ public class UserActivity extends AppCompatActivity implements
                 FragmentStarter.StartNewFragment(pf, this, FragmentLevel.LEVEL_ONE);
                 break;
             case R.id.nav_logout:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
                 this.finish();
                 break;
             default: break;

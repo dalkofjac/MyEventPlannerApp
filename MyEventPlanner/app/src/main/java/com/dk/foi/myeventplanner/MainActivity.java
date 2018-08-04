@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements
     private Toolbar toolbar;
     private Util util = new Util();
 
+    private static MainActivity mainActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,10 +56,6 @@ public class MainActivity extends AppCompatActivity implements
 
         fragmentManager = getFragmentManager();
         fragmentManager.addOnBackStackChangedListener(this);
-
-        util.setLanguage(this);
-        PreferenceManager.getDefaultSharedPreferences(this)
-                .registerOnSharedPreferenceChangeListener(this);
 
         drawer = findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(
@@ -84,6 +82,15 @@ public class MainActivity extends AppCompatActivity implements
 
         ButterKnife.bind(this);
         FlowManager.init(new FlowConfig.Builder(this).build());
+
+        util.setLanguage(this);
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .registerOnSharedPreferenceChangeListener(this);
+
+        navigationView.getMenu().clear();
+        navigationView.inflateMenu(R.menu.activity_main_drawer);
+
+        mainActivity = this;
 
         MainScreenFragment msf = new MainScreenFragment();
         fragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -185,5 +192,9 @@ public class MainActivity extends AppCompatActivity implements
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         util.setLanguage(this);
         this.recreate();
+    }
+
+    public static MainActivity getInstance(){
+        return mainActivity;
     }
 }

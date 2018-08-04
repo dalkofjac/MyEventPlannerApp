@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dk.foi.myeventplanner.MainActivity;
 import com.dk.foi.myeventplanner.R;
 import com.dk.foi.myeventplanner.webservices.UserService;
 
@@ -67,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                 intent.putExtra("USER_ID", response);
                 startActivity(intent);
 
+                MainActivity.getInstance().finish();
                 this.finish();
             }
         }
