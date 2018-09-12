@@ -1,5 +1,14 @@
 // Docker commands
 
+// Get Docker machine status
+docker-machine status
+
+// Start Docker machine
+docker-machine start
+
+// Stop Docker machine
+docker-machine stop
+
 // Build Docker image from Dockerfile
 docker build -t 'image-name' .
 

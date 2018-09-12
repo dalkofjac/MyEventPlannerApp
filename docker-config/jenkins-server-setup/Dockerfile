@@ -1,5 +1,8 @@
 # Docker configuration for Jenkins - Android setup
-# Credits to https://hub.docker.com/u/xmartlabs/ for idea and major part of this config 
+# Credits to https://hub.docker.com/u/xmartlabs/ for idea and major part of this config
+# In case this config gets outdated, use the following image:
+# https://hub.docker.com/r/xmartlabs/jenkins-android/ 
+# and manually install recommended Jenkins plugins, plus additional plugins listed below
 
 # Creating AndroidSdk image
 FROM ubuntu
