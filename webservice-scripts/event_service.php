@@ -10,7 +10,7 @@ $mysqli = new mysqli($server_name, $mysql_user, $mysql_pass, $db_name);
 $response = array();
 
 if($queryId == "1"){
-    // queryId - 1 -> Requesting all events from one user (userId) ...
+    // queryId - 1 -> Requesting all events from one user (userId) ... ...
     
     $userId = $_POST["userId"];
     
